@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">O Sistema de Intents</string>
+    <string name="tit_activity_envia_msg">Envia Mensagem</string>
+    <string name="tit_activity_recebe_msg">Recebe Mensagem</string>
+    <string name="btniniciaintent">Inicia Intent</string>
+    <string name="btnenviageral">Envia Padrao</string>
+    <string name="btnsempreescolhe">Sempre Escolhe</string>
+    <string name="btnenviawhatsapp">Envia para o WhatsApp</string>
+    <string name="btnenviagoogledocs">Envia para o Google Docs</string>
+    <string name="lblcxescolha">Escolha o Aplicativo</string>
+    <string name="errowhatsapp">WhatsApp não Instalado</string>
+    <string name="errogoogledocs">Conexão com o Google Docs falhou</string>
+</resources>

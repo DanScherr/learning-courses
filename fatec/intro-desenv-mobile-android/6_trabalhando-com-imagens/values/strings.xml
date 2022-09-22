@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Trabalhando com Imagem</string>
+    <string name="imgdescr_peq">Imagem pequena</string>
+    <string name="imgdescr_med">Imagem média</string>
+    <string name="imgdescr_gde">Imagem grande</string>
+    <string name="imgdescr_principal">Imagem Exemplo</string>
+    <string name="lblconjimg">Usar o conjunto vertical de imagens</string>
+    <string name="lblswitch">Exibir espaço ocupado pelo ImageView</string>
+    <string name="lblopcoes">Opções de Visualização</string>
+    <string name="btntroca">Troca Opção de Visualização</string>
+    <string-array name="opcoesImagem">
+        <item>centerInside</item>
+        <item>center</item>
+        <item>centerCrop</item>
+        <item>fitStart</item>
+        <item>fitCenter</item>
+        <item>fitEnd</item>
+        <item>fitXY</item>
+        <item>matrix</item>
+    </string-array>
+</resources>

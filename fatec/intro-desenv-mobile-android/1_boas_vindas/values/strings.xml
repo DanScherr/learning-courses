@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Boas Vindas Manha</string>
+    <string name="txt_rotulo">Wazap m*fucker</string>
+    <string name="txt_btnMensagem">Press para msg!</string>
+    <string name="txt_btnLimpa">Limpar msg.</string>
+</resources>

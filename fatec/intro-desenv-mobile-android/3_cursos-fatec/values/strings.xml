@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Cursos Fatec</string>
+    <string name="selcurso">Selecione um Curso</string>
+    <string name="vercurso">Onde há tal curso?</string>
+    <string name="lblfatec">Fatecs encontradas</string>
+    <string-array name="cursos">
+        <item>Análise e Desenvolvimento de Sistemas</item>
+        <item>Jogos Digitais</item>
+        <item>Segurança da Informação</item>
+        <item>Gestão Comercial</item>
+        <item>Comércio Exterior</item>
+        <item>Secretariado</item>
+    </string-array>
+</resources>

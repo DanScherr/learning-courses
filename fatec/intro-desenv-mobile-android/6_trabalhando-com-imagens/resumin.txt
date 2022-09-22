@@ -1,0 +1,51 @@
+=========================TRABALHANDO COM IMAGENS===========================
+
+- Def: drawable -> desenháveis: pode ser img, vetorizados, etc.
+
+- Pasta *drawable dentro da pasta *res (resources)
+
+- Tentar criar os resources (cores e drawables, antes de implementar os botões e caixas no xml).
+
+- Img que sempre existe, a do icone:
+ic_launcher_background.xml   ->>  background do icone do app
+	|_> o resto do ícone fica nas pastas mipmap (que depende da resolução do cel).
+
+-calculo de bits por img:
+120x120 png -> 14.400 pixel x 4 (cores) -> 57.600 bytes = 57KB ytes
+	|_> entretanto, ao ser compactado, diminui o tamanho da img. Por isso não se tem imgs bnp (bitmap).
+
+***PNG é o tipo preferido
+
+***Nome de arq n deve ter maiuscula, caract especiais e espaços. Ñ usar hífen (pode underline e número).
+	|_>***letra minuscula, algorismos e underline.
+
+-Vetores em xml podem ser alterados (tamanho) por códigos no Android Studio.
+
+-clicar com o botão direito do mouse em cima da pasta drawable.
+	|_> pode-se ir em new e depois vector asset, onde pode-se criar um vetor determinando os valores (tam), opacidade, trabalhar/escoher com arquivos criados (svg, psd), clip arts (biblioteca android), cor, etc.
+
+*atributo contentDescription: acessibilidade para cego
+
+- elementos de layout para trab com imgs:
+	|_> img button: abre tela para escolher img (escolher do resource da pasta de drawable, ou colocar qlqr img e dps trocar).
+	Atributo srcCompact: escolher com a tag @drawable qual img para o button.
+	Atributos com uma chavinha antes e mesmo nome, significa que dará visualização diferente para o desenvolvedor.
+	Pode-se modificar tam, por padrão é wrap content.
+	(no app do prof, colocou-se um divider atras pra ficar apenas como um plano de fundo dos btoes).
+	*função corrente (chains): selecionar mais de um elemento e com isso pode-se atraves do botão direito colocar correntes para criar uma distribuição igualitária no layout. Não precisam estar um ao lado do outro perfeitamente. 		|_>Pode-se vincular um elemento dentro dos elementos acorrentados com outros elemntos de layout (no caso do prof ele vinculou com o divisor, e depois alterou essa altura no constraint widget). E também, pode-se manipular o alinhamento deles após ter criado a corrente.
+		|_>Com isso, necessita-se apenas mudar o divider para que os botoes acompanhem no layout
+	|_> img View: srCompat: define img de apresentação.
+	Padrão de tam é wrap content, pode ser alterada.
+	*Propriedade scaleType: ler no pdf (matrix - pd mexer na img - rotações, spinnings, deslocamentos na tela, cizalhamento... link no pdf).
+		
+
+- Prefixo *tools no cód xml: significa que só irá rodar daquela forma para o desenvolvedor.
+
+- Botão switch: alterar o tamanho do botão: switchMinWidth.
+		alterar o escrito: string.
+
+- spinner -> string array ::: @array...  (não se implementa OnClick no spinner).
+	|_> nesse caso, escolhe no spinner e implementa com o botão de baixo.
+
+- selecionar 3 botões e atribuir/vincular o mesmo método no OnClick (parametro view para saber qual botão ta realizando a ação)
+

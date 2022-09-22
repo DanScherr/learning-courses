@@ -1,0 +1,36 @@
+Layout duplo e preservação de dados em campos (textView) pelo ciclo de atividades.
+
+O padrão é que em caixas editaveis, qnd se roda o aparelho, o
+conteúdo não é alterado. Já as textViews, q não interagem com
+teclado virtual, ao mudar o layout do dispositivo, os dados se
+perdem.
+
+Se criar o layout_land depois de ter criado o paisagem, o android irá copiar tudo pra ele. Se quiser fazer tudo diferente, deve-se criar antes.
+
+Tudo que vai interagir no cod no layout precisa de ID:
+|_> botao smp tem que ter ID (btnAlgumacoisa)
+|_> txtAlgumacoisa
+|_> edtAlgumacoisa
+
+Por conta de terem 2 layouts, os botões precisam dar match no mesmo ID
+
+Cada botão tem um método pra falar o que ele faz e transformar as informações nos tipos de variaveis necessarios
+
+**********************************************************************************
+
+::::Como achar onde ficam os *layouts nas pastas raízes do pc::::
+Nomepasta_app -> app -> src -> main -> res -> layout -> activity_main.xml
+----------------------------------------------------------------
+Nomepasta_app -> app -> src -> main -> res -> layout-land -> activity_main.xml
+----------------------------------------------------------------
+|_> para mexer nas *cores e *strings, utiliza-se o mesmo arq e referencia no background do arq layout com o @color ( tem como alterar na mão clicando no quadradinho do lado esquerdo).
+
+--*Linear Layout (vertical) / dimensionamento:
+0dp (ainda pode alterar distanciamento - constraint widget), wrap content, match_parent (ocupa precisamente todo espaço do parente - pd-se usar margin)
+|_> dimensionando *textView dentro do Linear Layout:
+por padrão não pd se aplicar constraint (criar vinculos) para o Linear Layout, entretanto, no dimensionamento, pode-se usar o *0dp (por padrão facilita o match_parent e o wrap content) e o *layout_weight (valor = 1) -> divide igualmente o espaço do linear layout distribuindo pesos entre os componentes (continua responsivo ao rodar a tela).
+
+--*Linear Layout (hor.) / cria antes dos text view com peso, adc butões, muda o *height para wrap content e altera o layout_weight para nada (se é pra envolver o conteúdo tem q tirar o peso) que irá criar uma ***barra de ferramentas.
+|_> como esse linearLayout hor vai estar ocupando um espaço fixo, os textviews que estão dividindo o espaço, estarão dividindo igualmente o espaço restante. (pode colocar a barra em baixo ou em cima).
+
+

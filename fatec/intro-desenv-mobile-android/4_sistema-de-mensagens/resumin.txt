@@ -1,0 +1,43 @@
+https://developer.android.com/guide/topics/resources/drawable-resource
+	|-> ir no de formato
+
+https://developer.android.com/guide/components/intents-filters
+	|-> descreve os tipos de intents: explicitos e implicitos
+
+https://developer.android.com/reference/android/content/Intent#intent-structure
+	|-> documentação da classe intent e sua estrutura
+
+
+----------------------------------------------------------------------------------
+			     ***Criar uma nova Activity:***
+----------------------------------------------------------------------------------
+	|-> file -> new -> Activity -> Empty Activity (mesmo nome que voce colocar 	na...) Da para usar as cores do arq color.xml normal)
+		|-> Layout vazio, apenas com o esquema inicial do xml, apenas com 		strainght layout (necessário construir todo o esquema). Mesmo pro 			seu código java.
+
+
+----------------------------------------------------------------------------------
+	  *****ALTERANDO FUNDO DE BOTÕES e CAIXAS DE TEXTO COM O SHAPE*****
+----------------------------------------------------------------------------------
+SHAPE (novo elemento): são drawables, aqui, usados em background
+	|-> criados na pasta " res -> drawable -> botao direito na pasta -> new -> 	drawable resource file" (nome tudo junto em minúsculo sem caracteres 			especiais)
+	|-> root element mudamos no proprio código do drawable 			(<selecetor></selecetor>) -> com o tempo, fazendo testes e consultando a 		documentação na pag do developer nas informações sobre os drawables da 			para saber quais os tipos diferentes. Tipo, hoje utilizaremos o shape. Só 		mudar o nome na mao mesmo que o android vai mudar o squema de formatação 		que está na url em frente ao <> para buscar detalhes dessa formatação.
+	|-> no caso do shape, tem-se que especificar o tipo. Dentro da tag: 			android:shape="rectangle">
+	ao verificar na activityMain, pode-se reparar que o botão ja não está mais 	em vermelho.
+	|-> mas ainda é necessário implementar os parametros para estabelecer o 		visual.
+	|-> solid é a cor - citada no arq color.xml comum; stroke é a borda: 			especifica a cor - arq color comum, e a expessura da borda; corners é o 		arredondamento dos cantos; padding: ta zerado.
+		|-> mais propriedades no link la em cima
+
+	|-> *curiosidade: mesma tecnica usada para elaborar o balaozinho do 			whatsapp, mas não é formato shape.
+
+
+----------------------------------------------------------------------------------
+	AGORA COM TUDO IMPLEMENTADO E PRONTO, TEM QUE PROGRAMAR O JAVERA
+----------------------------------------------------------------------------------
+Quando se programa com uma ou mais telas em um app, o processo de comunicação entre Activities ele é feito pelo android. Ele tem o controle total de qual tela abre e qual tela fecha, qual vai pra frente, qual fica escondida. Ele quem gerencia tudo. Por isso o ciclo de vida do android. Toda criação de Activity é feito pelo android.
+
+----------------------------------------------------------------------------------
+				     MANIFESTO
+----------------------------------------------------------------------------------
+Intent filter é para que ele atenda a msg enviada para ele através da Intent e resgata por método de Intent.
+Basta configurar 3 coisas. Salvo como foto na pasta.
+	|-> pode ter mais de um filtro de intent para receber outros dados

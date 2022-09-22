@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/corFundo"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:text="@string/selcurso"
+            android:textColor="@color/corVerTexto"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spnCursos"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/corBranca"
+            android:entries="@array/cursos" />
+
+        <Button
+            android:id="@+id/btnCurso"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:onClick="btnCursoOnClick"
+            android:text="@string/vercurso" />
+
+        <TextView
+            android:id="@+id/lblFatec"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="bottom|center_horizontal"
+            android:text="@string/lblfatec"
+            android:textColor="@color/corVerTexto"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtFatecs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/corBranca"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbars="vertical"
+            android:text=""
+            android:textColor="@color/corVerTexto"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

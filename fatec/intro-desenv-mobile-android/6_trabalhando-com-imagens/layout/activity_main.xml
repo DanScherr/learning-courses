@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/corFundoLayout"
+    tools:context=".MainActivity">
+
+    <View
+        android:id="@+id/dividerBtns"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:background="@color/corFundoFerramentas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnTamPeq"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#E7E8EA"
+        android:contentDescription="@string/imgdescr_peq"
+        android:onClick="btnTamImagem"
+        android:tint="#0915E8"
+        app:layout_constraintBottom_toBottomOf="@+id/dividerBtns"
+        app:layout_constraintEnd_toStartOf="@+id/btnTamMed"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dividerBtns"
+        app:srcCompat="@drawable/btn_tamanhoimagem_12" />
+
+    <ImageButton
+        android:id="@+id/btnTamMed"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#E7E8EA"
+        android:contentDescription="@string/imgdescr_med"
+        android:onClick="btnTamImagem"
+        android:tint="#0915E8"
+        app:layout_constraintBottom_toBottomOf="@+id/dividerBtns"
+        app:layout_constraintEnd_toStartOf="@+id/btnTamGde"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnTamPeq"
+        app:layout_constraintTop_toTopOf="@+id/dividerBtns"
+        app:srcCompat="@drawable/btn_tamanhoimagem_24" />
+
+    <ImageButton
+        android:id="@+id/btnTamGde"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#E7E8EA"
+        android:contentDescription="@string/imgdescr_gde"
+        android:onClick="btnTamImagem"
+        android:tint="#0915E8"
+        app:layout_constraintBottom_toBottomOf="@+id/dividerBtns"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnTamMed"
+        app:layout_constraintTop_toTopOf="@+id/dividerBtns"
+        app:srcCompat="@drawable/btn_tamanhoimagem_36" />
+
+    <Switch
+        android:id="@+id/swtImgVerticais"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:onClick="swtImgVerticaisOnClick"
+        android:showText="false"
+        android:switchMinWidth="80dp"
+        android:text="@string/lblconjimg"
+        app:layout_constraintEnd_toEndOf="@+id/dividerImg"
+        app:layout_constraintStart_toStartOf="@+id/dividerImg"
+        app:layout_constraintTop_toBottomOf="@+id/dividerBtns"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+
+    <View
+        android:id="@+id/dividerImg"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_marginTop="32dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dividerBtns" />
+
+    <ImageView
+        android:id="@+id/imgExemplo"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:contentDescription="@string/imgdescr_principal"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/dividerImg"
+        app:layout_constraintEnd_toEndOf="@+id/dividerImg"
+        app:layout_constraintStart_toStartOf="@+id/dividerImg"
+        app:layout_constraintTop_toTopOf="@+id/dividerImg"
+        app:srcCompat="@drawable/android600x600" />
+
+    <Switch
+        android:id="@+id/swtEspOcupado"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:checked="true"
+        android:onClick="swtEspOcupadoOnClick"
+        android:showText="false"
+        android:switchMinWidth="80dp"
+        android:text="@string/lblswitch"
+        app:layout_constraintEnd_toEndOf="@+id/dividerImg"
+        app:layout_constraintStart_toStartOf="@+id/dividerImg"
+        app:layout_constraintTop_toBottomOf="@+id/dividerImg"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="291dp"
+        android:text="@string/lblopcoes"
+        app:layout_constraintEnd_toEndOf="@+id/dividerImg"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toStartOf="@+id/dividerImg"
+        app:layout_constraintTop_toBottomOf="@+id/swtEspOcupado" />
+
+    <Spinner
+        android:id="@+id/spnOpcoes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:entries="@array/opcoesImagem"
+        app:layout_constraintEnd_toEndOf="@+id/dividerImg"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/dividerImg"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+
+    <Button
+        android:id="@+id/btnTrocaOpcao"
+        app:layout_constraintTop_toBottomOf="@+id/spnOpcoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="btnTrocaOpcaoOnClick"
+        android:text="@string/btntroca"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="621dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

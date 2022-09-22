@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303f9f</color>
+    <color name="colorAccent">#213DEE</color>
+    <color name="corTelaFundo">#FFE5AB</color>
+    <color name="corTextoFundo">#FAF0C8</color>
+    <color name="corBotaoFundo">#FFC107</color>
+    <color name="corBotaoBorda">#104DF7</color>
+    <color name="corRcbTelaFundo">#C4C9F7</color>
+    <color name="corRcbTextoFundo">#F8F6E9</color>
+</resources>

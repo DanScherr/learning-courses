@@ -1,0 +1,37 @@
+body{
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+table{
+	width: 600px;
+	/*collapse tira o espaçamento do separate que é o padrão*/
+	border-collapse: collapse;
+}
+
+th, td{
+	padding: 7px;
+}
+
+th{
+	/* Deixa todas as letras maiúsculas */
+	text-transform: uppercase;
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #111;
+	text-align: left;
+	font-size: 90%;
+	letter-spacing: 0.1em;
+}
+
+tr.alternado{
+	background-color: #efefef;	
+}
+
+/*convenção de alinhas numeros a direita, melhor para visualizar quando mt grandes*/
+tr .numero{
+	text-align: right;
+}
+
+/*mudando cor*/
+tr:hover{
+	background-color: #c3e6e5;
+}

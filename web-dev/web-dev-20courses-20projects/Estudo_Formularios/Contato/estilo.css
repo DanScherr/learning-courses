@@ -1,0 +1,57 @@
+body{
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+fieldset{
+	margin: 1em 0;
+	padding: 1em;
+	background: #f8f8f8;
+	
+}
+
+legend{
+	font-weight: bold;
+	
+}
+
+label{
+	/*  label por padrão é inline
+tornando-o block, ele se move a cima da caixa de input	*/
+	display: block;
+	/* o cursor vira uma mão ao passar por cima do label, fazendo
+	parecer como se o usuário puder clicar */
+	cursor: pointer;
+	
+}
+
+/*  Podemos colocar nossos fieldsets dentro de divides com tamanhos fixos
+e habilitar a largura e altura de inouts e txtarea como porcentagens
+para que ela preencha todo o espaço (100%) do tamanho minimo estipulado*/
+
+/* [] -> colchetes -> atribui à apenas um tipo de atributo
+ 
+mas como é novo é melhor utilizar o modelo antigo de vlasse's ou id's
+ para atribuir especificidades 
+
+input[type="text"] {
+	width: 20em;
+	
+}
+ */
+ 
+input{
+	width: 20em;
+}
+
+input.radio, input.checkbox, input.submit{
+	width: auto;
+}
+
+.radio{
+	margin-right: 1em;
+}
+
+textarea{
+	width: 20em;
+	height: 10em;
+}

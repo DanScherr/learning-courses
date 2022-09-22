@@ -1,0 +1,251 @@
+/******  ESTRUTURA DO SITE  ******
+*/
+*{
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family: "Trebuchet MS", Helvetica, sans-sans-serif;
+  background: #fff url(../imagens/fundo.png) repeat-x top right;
+}
+
+#container {
+  width: 750px;
+  margin: 0 auto;
+}
+
+#topo {
+  height: 150px;
+  background: url(../imagens/detalhe-topo.png) no-repeat right top;
+  padding-top: 25px;
+}
+
+.logo{
+  width: 152px;
+  height: 66px;
+  background: url(../imagens/logo.png) no-repeat center;
+  /*Esconder o notícias cidades para a esquerda do SITE
+  para que deificientes visuais possam ser informados da imagem de logo */
+  text-indent: -3000px;
+}
+
+/* ----BARRA DE NAVEGACAO----
+*/
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* formatando apenas ul topo*/
+#topo ul{
+  margin-top: 30px;
+  background: #b10333;
+  float: left;
+}
+
+/*Colocando uma aba ao lado da outra*/
+#topo ul li{
+  float: left;
+}
+
+/*Formatando link e adicioando divisor de abas*/
+#topo ul a{
+  font-size: 0.9em;
+  display: block;
+  padding: 0.5em 1.5em;
+  line-height: 2.1em;
+  text-decoration: none;
+  color: #fff;
+  /* se quiser so usar uma borda bonitinha ao inves de ter o trampo de criar uma
+  imagem
+  border-left: 1px groove red;
+  */
+  background: url(../imagens/divisor.png) no-repeat left center;
+}
+
+/*Tirando divisor da primeira aba*/
+#topo ul .primeiro a{
+  /* tirando a borda q n coloquei kkk
+  border: none;
+  */
+  background: none;
+}
+
+/*Mudando de cor o link ao passar o mouse por cima*/
+#topo ul a:hover{
+  color: #69001d;
+}
+
+/*Marcar pagina atual
+especificar que será alterado na barra de NAVEGACAO
+e no link com a classe home
+e fazer aparecer um cursor ao inves de uma mão
+na aba selecionada*/
+body.home #navegacao a#home,
+body.brasil #navegacao a#brasil,
+body.internacional #navegacao a#internacional,
+body.fotos #navegacao a#fotos
+{
+  color: #fff;
+  background: #de003e;
+  cursor: text;
+}
+
+
+/************CONFIGURANDO LAYOUT DE TRÊS COLUNAS****************/
+#conteudo{
+  margin-top: 60px;
+  background: #f5f5f5;
+}
+/*----Configuração serve para as 3----*/
+#lateral{
+  width: 180px;
+  /*Usando margem para que a barra lateral possa flutuar à esquerda
+  pois por conta de acessibilidade fizemos ela por último
+  -750px faz com que comece no extremo esquerdo do container         */
+  margin: 0 0 20px -750px;
+  float: left;
+}
+/*----Configuração serve para 3 colunas----*/
+/*Config padrão para o primario, os outros so mudar o que n repetir*/
+#primario{
+  width: 270px;
+  float: left;
+  /*Usando margem para que a barra lateral possa flutuar à esquerda
+  pois por conta de acessibilidade fizemos ela por último           */
+  margin: 0 0 20px 195px;
+}
+#secundario{
+  width: 270px;
+  /*Usando margem para que a barra lateral possa flutuar à esquerda
+  pois por conta de acessibilidade fizemos ela por último           */
+  margin: 0 0 20px 15px;
+  float: left;
+}
+/*----Configuração serve para 2 colunas----*/
+#duas-colunas #primario{
+  width: 555px;
+}
+/*----Configuração serve para 1 colunas----*/
+#uma-coluna #primario{
+  width: 750px;
+  margin: 0 0 20px 0;
+}
+
+/***********************CONFIGURANDO CAIXA****************************/
+.caixa{
+  margin: 10px 0;
+  padding: 5px;
+  background: #f3f3f3 url(../imagens/fundo-caixa.png);
+}
+h2{
+  font-size: 1em;
+  background: #294c71;
+  color: #fff;
+  padding: 5px;
+}
+.caixa-conteudo{
+  background: #fff;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+/*------------Formatando Menus Laterais-------------*/
+#lateral ul a{
+  font-size: 0.9em;
+  padding: 3px;
+  display: block;
+  line-height: 30px;
+  color: #000;
+  text-decoration: none;
+  border-bottom: 1px solid #f3f3f3f3;
+}
+#lateral ul a:hover{
+  background: #f9f9f9 url(../imagens/marcador.png) no-repeat left center;
+  padding-left: 20px;
+  color: #a1a1a1;
+}
+
+/*---------Formatando Formulário de Email----------*/
+label {
+  display: block;
+  cursor: pointer;
+}
+
+input {
+  margin: 4px;
+  padding: 5px;
+  width: 125px;
+  font-size: 0.8em;
+  background-color: #fff;
+  border: none;
+}
+
+input.submit {
+  width: 80px;
+  color: #fff;
+  background-color: #b10333;
+  border: 2px solid #870529;
+}
+
+/*---- formatandoimagens ----- */
+img.imagem-principal{
+  width: 98%;
+  border: 3px solid #dfdfdf;
+}
+
+/*---- formatando cabeçalhos ----- */
+h3 {
+  text-transform: uppercase;
+  display: inline;
+  font-size: 0.8em;
+  padding: 3px;
+}
+.destaque h3{
+  background: #b10333;
+  color: #fff;
+}
+.entrevista h3{
+  background: #de003e;
+  color: #fff;
+}
+
+/*---- formatando lista de noticias ----- */
+#listas-noticias li{
+  padding: 2px;
+  border-bottom: 1px solid #ccc;
+  height: 62px;
+}
+#listas-noticias li a{
+  text-decoration: none;
+}
+#listas-noticias li a h3{
+  padding: 0;
+  font-size: 0.9em;
+  color: #3e7ab9;
+}
+#listas-noticias li a p{
+  padding-top: 2px;
+  font-size: 0.7em;
+}
+#listas-noticias li:hover{
+  background: #eee;
+  cursor: pointer;
+}
+#listas-noticias li a img{
+  float: left;
+  margin: 5px;
+}
+/***********************CONFIGURANDO RODAPÉ****************************/
+#container-rodape{
+  background: #294c71;
+  padding: 20px;
+}
+#rodape{
+  width: 750px;
+  margin: 0 auto;
+  color: #fff;
+  text-align: center;
+}

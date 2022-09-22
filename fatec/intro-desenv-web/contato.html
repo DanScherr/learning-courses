@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato</title>
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <a href="">
+                <h1>skate or die</h1>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a id="selecionado" href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div id="contato">
+            <form>
+                <fieldset>
+                    <p>
+                        <label for="user">Nome: </label>
+                        <input type="text" id="user" name="user" maxlength="40" required="autofocus">
+                    </p>
+                    <p>
+                        <label style="clear: both;" for="email">Email: </label>
+                        <input type="email" id="email" name="email" required>
+                    </p>
+                    <p>
+                        <label for="comentario">Comentário:</label>
+                        <textarea name="comentario" id="comentario" cols="20" rows="4"></textarea>
+                    </p>
+                    <p><input class="submit" type="submit" value="enviar"></p>
+                </fieldset>
+            </form>
+        </div>
+
+        <footer>
+            <table>
+                <tr>
+                    <td><a href="index.html">Home</a></td>
+                    <td><a href="sobre.html">Sobre</a></td>
+                    <td><a href="galeria.html">Galeria</a></td>
+                    <td><a href="contato.html">Contato</a></td>
+                </tr>
+            </table>
+        </footer>
+        <p style="text-align: center; margin-top: 40px;">&copy; Copyright 2020 : Daniel Scheicher / Fatec - SP / ILP540</p>
+    </div>
+</body>
+
+</html>

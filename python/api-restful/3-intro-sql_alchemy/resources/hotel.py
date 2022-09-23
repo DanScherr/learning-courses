@@ -1,7 +1,7 @@
 # Resource -> para criação de recursos na api
 # reqparse -> para receber os elementos da requisição e estruturar para formato python
 from flask_restful import Resource, reqparse
-# importar modelo de hotel
+# 2. importar modelo de hotel
 from models.hotel import HotelModel
 
 # ---------------------- aqui seria um banco de dados ----------------
@@ -32,11 +32,12 @@ hoteis = [
 
 
 # ------------- Primeiro nível ------------
-# Classe que herda a classe Resource para criação de um recurso para ser adicionada na API
+# 2. Classe que herda a classe Resource para criação de um recurso para ser adicionada na API
 class Hoteis(Resource):
     def get(self):
-        # Estrutura de dicionário. Porém a biblioteca flask_restful transforma para json na requisição do site
-        return {'hoteis': hoteis}
+        # 2. faz o list comprehension (percorre todos os objetos do tipo HotelModel) 
+        # pra dar retorno transformando em json
+        return {'hoteis': [hotel.json() for hotel in HotelModel.query.all()]}
 
 
 # ------------- Segundo nível ------------
@@ -44,59 +45,66 @@ class Hotel(Resource):
     # definindo objeto construtor de tipo argumentos parseados
     argumentos = reqparse.RequestParser()
     # construindo or argumentos do objeto que só irá aceitar os argumentos definidos neste construtor com o add_argument
-    argumentos.add_argument('nome')
-    argumentos.add_argument('estrelas')
-    argumentos.add_argument('diaria')
-    argumentos.add_argument('cidade')
+    argumentos.add_argument('nome', type=str, required=True, help="The field 'nome' cannot be left blank")
+    argumentos.add_argument('estrelas', type=float, required=True, help="The field 'estrelas' cannot be left blank")
+    argumentos.add_argument('diaria', type=float, required=False, help="The field 'diaria' cannot be left blank")
+    argumentos.add_argument('cidade', type=str, required=False, help="The field 'cidade' cannot be left blank")
 
-    def find_hotel(self, hotel_id):
-        for hotel in hoteis:
-            if hotel['hotel_id'] == hotel_id:
-                return hotel
-        return None
+    # 2. sent find_hotel to models/hotel.py
 
     def get(self, hotel_id):
-        hotel = self.find_hotel(hotel_id)
-        if hotel: # se não none
-            return hotel
+        # 2. se o hotel já foi criado antes
+        hotel_encontrado = HotelModel.find_hotel(hotel_id)
+        if hotel_encontrado: # se não none
+            return hotel_encontrado.json()
         return {'message': 'Hotel not found.'}, 404 # not found
 
     def post(self, hotel_id):
+        # 2. se o hotel já foi criado antes
+        hotel_encontrado = HotelModel.find_hotel(hotel_id)
+        if hotel_encontrado:
+            return {'message': f"Hotel id '{hotel_id}' already exists."}, 400 # bad request
+        # 2. caso contrário
         # dados será um dicionário com chave: valor de todos os arguemntos passados
         dados = Hotel.argumentos.parse_args()
-        # cria novo hotel com parametros do post, no PUT tem uma versão melhorada de novo_hotel
-        novo_hotel = {
-            'hotel_id' : hotel_id, # passado na url
-            'nome' : dados['nome'],
-            'estrelas' : dados['estrelas'],
-            'diaria' : dados['diaria'],
-            'cidade' : dados['cidade']
-        }
+        # cria novo hotel com parametros do post
+        novo_hotel = HotelModel(hotel_id, **dados)
         # Adiciona novo hotel a lista de hoteis
-        hoteis.append(novo_hotel)
+        try:
+            novo_hotel.save_hotel()
+        except:
+            return {'message:' 'An internal error ocurred trying to save hotel.'}, 500 # internal server error
         # Retorna hotel criado
-        return novo_hotel, 200 # sucesso criação hotel
+        return novo_hotel.json(), 200 # sucesso criação hotel
 
     def put(self, hotel_id):
+        # busca argumentos do path e cria novo dicionario
         dados = Hotel.argumentos.parse_args()
-        # # cria novo hotel com parametros do post
-        # novo_hotel = { 'hotel_id' : hotel_id, **dados }
-        novo_hotel_objeto = HotelModel(hotel_id, **dados)
-        # como não podemos retornar um objeto, precisamos transf para json
-        novo_hotel = novo_hotel_objeto.json()
-        # busca hotel
-        hotel = self.find_hotel(hotel_id)
-        # se não none
-        if hotel:
-            hotel.update(novo_hotel)
-            return novo_hotel, 200
-        # caso none, cria hotel
-        hoteis.append(novo_hotel)
-        return novo_hotel, 201 # created
+        # 2. busca hotel entre os objetos da classe HotelModel
+        hotel_encontrado = HotelModel.find_hotel(hotel_id)
+        # se não for none
+        if hotel_encontrado:
+            hotel_encontrado.update_hotel(**dados)
+            try:
+                hotel_encontrado.save_hotel()
+            except:
+                return {'message:' 'An internal error ocurred trying to save hotel.'}, 500 # internal server error
+            return hotel_encontrado.json(), 200
+        # 2. caso o hotel não tenha sido encontrado, criará um novo
+        novo_hotel = HotelModel(hotel_id, **dados)
+        # 2. caso none, salva hotel
+        novo_hotel.save_hotel()
+        return novo_hotel.json(), 201 # created
 
-    
     def delete(self, hotel_id):
-        # informar o python que hoteis é uma variavel global
-        global hoteis
-        hoteis = [hotel for hotel in hoteis if hotel['hotel_id'] != hotel_id]
-        return {'message': 'Hotel deleted.'}
+        # 2. procurar se existe o hotel que deseja excluir
+        hotel_encontrado = HotelModel.find_hotel(hotel_id)
+        # 2. se hotel encontrado,
+        if hotel_encontrado:
+            # 2. deleta hotel
+            try:
+                hotel_encontrado.delete_hotel()
+                return {'message': 'Hotel deleted.'}, 200
+            except:
+                return {'message:' 'An internal error ocurred trying to delete hotel.'}, 500 # internal server error
+        return {'message': 'Hotel not found'}, 404

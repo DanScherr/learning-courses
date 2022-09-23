@@ -34,3 +34,38 @@ class HotelModel(banco.Model):
             'diaria': self.diaria,
             'cidade': self.cidade
         }
+
+    # 2. cls parameter means it's a class method, it means it has a
+    # 2. different scope and accessability. it'll search in all
+    # objects from this class
+    @classmethod
+    def find_hotel(cls, hotel_id):
+        # 2. .query extend from banco.Model (consulta banco)
+        # 2. SELECT * FROM hoteis WHERE hotel_id = hotel_id
+        hotel = cls.query.filter_by(hotel_id=hotel_id).first()
+        if hotel:
+            return hotel
+        else:
+            return None
+
+    # 2. salvando proprio objeto ao banco
+    def save_hotel(self):
+        # 2. adiciona objeto instanciado (tabela) ao banco
+        banco.session.add(self)
+        # 2. commita as ações feitas
+        banco.session.commit()
+
+    # 2. criando metodo do proprio objeto para realizar update da tabela
+    def update_hotel(self, nome, estrelas, diaria, cidade):
+        # 2. ressetando os atributos, menos o ID que ja está correctamente
+        # setado pois o update está vindo do find_hotel
+        self.nome = nome
+        self.estrelas = estrelas
+        self.diaria = diaria
+        self.cidade = cidade
+
+    def delete_hotel(self):
+        # 2. delete a si mesmo do banco
+        banco.session.delete(self)
+        # 2. commita
+        banco.session.commit()

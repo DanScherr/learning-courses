@@ -3,7 +3,8 @@
 from flask_restful import Resource, reqparse
 # 2. importar modelo de hotel
 from models.hotel import HotelModel
-
+# 3. importar jwt_required para definir quais metodos precisam do login do usuario
+from flask_jwt_extended import jwt_required # feito com decorador
 
 # ------------- Primeiro nível ------------
 # 2. Classe que herda a classe Resource para criação de um recurso para ser adicionada na API
@@ -25,8 +26,7 @@ class Hotel(Resource):
     argumentos.add_argument('diaria', type=float, required=False, help="The field 'diaria' cannot be left blank")
     argumentos.add_argument('cidade', type=str, required=False, help="The field 'cidade' cannot be left blank")
 
-    # 2. sent find_hotel to models/hotel.py
-
+    # 3. para acessar hotel, não precisa estar logada
     def get(self, hotel_id):
         # 2. se o hotel já foi criado antes
         hotel_encontrado = HotelModel.find_hotel(hotel_id)
@@ -34,6 +34,8 @@ class Hotel(Resource):
             return hotel_encontrado.json()
         return {'message': 'Hotel not found.'}, 404 # not found
 
+    @jwt_required()
+    # 3. precisa do token de login para acesso
     def post(self, hotel_id):
         # 2. se o hotel já foi criado antes
         hotel_encontrado = HotelModel.find_hotel(hotel_id)
@@ -52,6 +54,8 @@ class Hotel(Resource):
         # Retorna hotel criado
         return novo_hotel.json(), 200 # sucesso criação hotel
 
+    @jwt_required()
+    # 3. precisa do token de login para acesso
     def put(self, hotel_id):
         # busca argumentos do path e cria novo dicionario
         dados = Hotel.argumentos.parse_args()
@@ -71,6 +75,8 @@ class Hotel(Resource):
         novo_hotel.save_hotel()
         return novo_hotel.json(), 201 # created
 
+    @jwt_required()
+    # 3. precisa do token de login para acesso
     def delete(self, hotel_id):
         # 2. procurar se existe o hotel que deseja excluir
         hotel_encontrado = HotelModel.find_hotel(hotel_id)

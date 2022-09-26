@@ -51,6 +51,16 @@ class UserModel(banco.Model):
         else:
             return None
 
+    @classmethod
+    def find_user_by_login(cls, login):
+        # 3. .query extend from banco.Model (consulta banco)
+        # 3. SELECT * FROM hoteis WHERE hotel_id = hotel_id
+        user = cls.query.filter_by(login=login).first()
+        if user:
+            return user
+        else:
+            return None
+
     # 3. salvando proprio objeto ao banco
     def save_user(self):
         # 3. adiciona objeto instanciado (tabela) ao banco
@@ -63,5 +73,6 @@ class UserModel(banco.Model):
         banco.session.delete(self)
         # 3. commita
         banco.session.commit()
+
 # ---------------------------------------------------------------------------------------
 # =======================================================================================

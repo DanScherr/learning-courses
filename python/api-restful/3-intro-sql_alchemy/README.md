@@ -21,7 +21,7 @@
 
 * ## Estrutura customizavel ***levando em conta a modelagem de negócio***
 
-> V. Implementa código entre III e IV
+> V. Implementa código entre III e IV para adicionar os Recursos á api
 
 <br>
 

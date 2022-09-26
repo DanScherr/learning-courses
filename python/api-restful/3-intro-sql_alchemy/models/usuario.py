@@ -5,7 +5,7 @@ from sql_alchemy import banco
 
 
 # 3. ===== Classe hotel do tipo Model ===================================================
-class HotelModel(banco.Model):
+class UserModel(banco.Model):
 
 
 # Parte que o SQL alchemy precisa para entender que é uma tabela e a estrutura da tabela

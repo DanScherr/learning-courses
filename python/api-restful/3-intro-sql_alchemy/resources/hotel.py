@@ -4,32 +4,6 @@ from flask_restful import Resource, reqparse
 # 2. importar modelo de hotel
 from models.hotel import HotelModel
 
-# ---------------------- aqui seria um banco de dados ----------------
-hoteis = [
-    {
-        'hotel_id': 'alpha',
-        'nome': 'Alpha Hotel',
-        'estrelas': 4.3,
-        'diaria': 420.3,
-        'cidade': 'Rio de Janeiro'
-    },
-    {
-        'hotel_id': 'betta',
-        'nome': 'Betta Hotel',
-        'estrelas': 3.3,
-        'diaria': 220.5,
-        'cidade': 'São Paulo'
-    },
-    {
-        'hotel_id': 'sigma',
-        'nome': 'Sigma Hotel',
-        'estrelas': 4.7,
-        'diaria': 480.9,
-        'cidade': 'Ribeirão Preto'
-    }
-]
-# ----------------------------------------------------------------
-
 
 # ------------- Primeiro nível ------------
 # 2. Classe que herda a classe Resource para criação de um recurso para ser adicionada na API
@@ -42,6 +16,7 @@ class Hoteis(Resource):
 
 # ------------- Segundo nível ------------
 class Hotel(Resource):
+    # 3. só para o POST
     # definindo objeto construtor de tipo argumentos parseados
     argumentos = reqparse.RequestParser()
     # construindo or argumentos do objeto que só irá aceitar os argumentos definidos neste construtor com o add_argument

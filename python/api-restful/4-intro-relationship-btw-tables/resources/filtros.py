@@ -1,5 +1,3 @@
-# 4. criando função para criar um modelo normalizado dos parametros de pesquisa (default) + parametros sem default
-# da requisição do usuario
 def normalize_path_params(  cidade = None, 
                             estrelas_min = 0, 
                             estrelas_max = 5, 
@@ -7,7 +5,6 @@ def normalize_path_params(  cidade = None,
                             diaria_max = 10000, 
                             limit = 50, 
                             offset = 0, **dados ):
-    # 4. se cidade foi passada:
     if cidade:
         return {
             'estrelas_min': estrelas_min,
@@ -18,7 +15,6 @@ def normalize_path_params(  cidade = None,
             'limit': limit,
             'offset': offset
         }
-    # 4. caso cidade não tenha sido passada:
     return {
             'estrelas_min': estrelas_min,
             'estrelas_max': estrelas_max,

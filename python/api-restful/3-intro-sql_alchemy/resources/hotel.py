@@ -1,18 +1,110 @@
 # Resource -> para criação de recursos na api
 # reqparse -> para receber os elementos da requisição e estruturar para formato python
+from importlib.resources import path
 from flask_restful import Resource, reqparse
 # 2. importar modelo de hotel
 from models.hotel import HotelModel
 # 3. importar jwt_required para definir quais metodos precisam do login do usuario
 from flask_jwt_extended import jwt_required # feito com decorador
+# 4. importar sqlite3 para fazermos consultas mais complexas
+import sqlite3
+
+
+# 4. criando função para criar um modelo normalizado dos parametros de pesquisa (default) + parametros sem default
+# da requisição do usuario
+def normalize_path_params(  cidade = None, 
+                            estrelas_min = 0, 
+                            estrelas_max = 5, 
+                            diaria_min = 0, 
+                            diaria_max = 10000, 
+                            limit = 50, 
+                            offset = 0, **dados ):
+    # 4. se cidade foi passada:
+    if cidade:
+        return {
+            'estrelas_min': estrelas_min,
+            'estrelas_max': estrelas_max,
+            'diaria_min': diaria_min,
+            'diaria_max': diaria_max,
+            'cidade': cidade,
+            'limit': limit,
+            'offset': offset
+        }
+    # 4. caso cidade não tenha sido passada:
+    return {
+            'estrelas_min': estrelas_min,
+            'estrelas_max': estrelas_max,
+            'diaria_min': diaria_min,
+            'diaria_max': diaria_max,
+            'limit': limit,
+            'offset': offset
+        }
+
+
+# 4. queremos ser capazes de usar o path:   /hoteis?cidade=Rio de Janeiro&estrelas_min=4&diaria_max=400
+# para a requisicao do usuario
+path_params = reqparse.RequestParser()
+path_params.add_argument('cidade', type=str, location='values')
+path_params.add_argument('estrelas_min', type=float, location='values')
+path_params.add_argument('estrelas_max', type=float, location='values')
+path_params.add_argument('diaria_min', type=float, location='values')
+path_params.add_argument('diaria_max', type=float, location='values')
+path_params.add_argument('limit', type=float, location='values')
+path_params.add_argument('offset', type=float, location='values')
+
 
 # ------------- Primeiro nível ------------
 # 2. Classe que herda a classe Resource para criação de um recurso para ser adicionada na API
 class Hoteis(Resource):
     def get(self):
-        # 2. faz o list comprehension (percorre todos os objetos do tipo HotelModel) 
-        # pra dar retorno transformando em json
-        return {'hoteis': [hotel.json() for hotel in HotelModel.query.all()]}
+        # -------- 4. realizando conexao com banco -------------------------------------------------------
+        connection = sqlite3.connect('banco.db')
+        cursor = connection.cursor()
+        # -------- 4. estabelecendo, limpando e padronizando parametros recebidos pelo usuario -----------
+        # 4. recebendo todos parametros do usuario e parseando
+        dados = path_params.parse_args()
+        print(f'parametos do header: {dados}\n')
+        # 4. é necessário realizar limpeza prévia dos dados, por que se não, valores none podem influenciar nos filtros
+        # percorre dados e, caso não nulo, cria dicionario com dados validos
+        dados_validos = {chave:dados[chave] for chave in dados if dados[chave] is not None}
+        print(f'dados validos: {dados_validos}\n')
+        # 4. passa dicionario com valores validos para função que setta com/sem default pré-estabelecidos
+        parametros = normalize_path_params(**dados_validos)
+        print(f'parametros normalizados: {parametros}\n')
+        # -------- 4. realizando query, com/sem cidade ---------------------------------------------------
+        # 4. com o get, recebemos none caso o parametro não existir -> mais seguro
+        if not parametros.get('cidade'):
+            consulta = "SELECT * FROM hoteis \
+                        WHERE (estrelas >= ? and estrelas <= ?) \
+                        and (diaria >= ? and diaria <= ?) \
+                        LIMIT ? OFFSET ?"
+            # 4. .execute recebe um tupla, e em parametros temos um dicionario, portanto:
+            # receberemos uma tupla na ordem que determinamos em normalize_path_params
+            tupla_parametros = tuple([parametros[chave] for chave in parametros])
+            resultado = cursor.execute(consulta, tupla_parametros)
+        else:
+            consulta = "SELECT  * FROM hoteis \
+                        WHERE   (estrelas >= ? and estrelas <= ?) \
+                                and (diaria >= ? and diaria <= ?) \
+                                and cidade = ? \
+                        LIMIT   ? \
+                        OFFSET  ?"
+            tupla_parametros = tuple([parametros[chave] for chave in parametros])
+            resultado = cursor.execute(consulta, tupla_parametros)
+        # -------- 4. queremos colocar o resultado numa lista de dicionários com a pesquisa dos parâmetros passados
+        hoteis = []
+        for linha in resultado:
+            hoteis.append(
+                {
+                    'hotel_id': linha[0],
+                    'nome': linha[1],
+                    'estrelas': linha[2],
+                    'diaria': linha[3],
+                    'cidade': linha[4]
+                }
+            )
+        # -------- 4. retorna um dicionário com lista de dicionários de hotéis -------------------------
+        return {'hoteis': hoteis}
 
 
 # ------------- Segundo nível ------------

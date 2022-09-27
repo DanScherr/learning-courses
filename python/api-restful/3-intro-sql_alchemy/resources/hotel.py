@@ -8,37 +8,8 @@ from models.hotel import HotelModel
 from flask_jwt_extended import jwt_required # feito com decorador
 # 4. importar sqlite3 para fazermos consultas mais complexas
 import sqlite3
-
-
-# 4. criando função para criar um modelo normalizado dos parametros de pesquisa (default) + parametros sem default
-# da requisição do usuario
-def normalize_path_params(  cidade = None, 
-                            estrelas_min = 0, 
-                            estrelas_max = 5, 
-                            diaria_min = 0, 
-                            diaria_max = 10000, 
-                            limit = 50, 
-                            offset = 0, **dados ):
-    # 4. se cidade foi passada:
-    if cidade:
-        return {
-            'estrelas_min': estrelas_min,
-            'estrelas_max': estrelas_max,
-            'diaria_min': diaria_min,
-            'diaria_max': diaria_max,
-            'cidade': cidade,
-            'limit': limit,
-            'offset': offset
-        }
-    # 4. caso cidade não tenha sido passada:
-    return {
-            'estrelas_min': estrelas_min,
-            'estrelas_max': estrelas_max,
-            'diaria_min': diaria_min,
-            'diaria_max': diaria_max,
-            'limit': limit,
-            'offset': offset
-        }
+# 4. importar função que normaliza e padroniza parametros de filtro da url
+from resources.filtros import normalize_path_params, consulta_com_cidade, consulta_sem_cidade
 
 
 # 4. queremos ser capazes de usar o path:   /hoteis?cidade=Rio de Janeiro&estrelas_min=4&diaria_max=400
@@ -53,7 +24,8 @@ path_params.add_argument('limit', type=float, location='values')
 path_params.add_argument('offset', type=float, location='values')
 
 
-# ------------- Primeiro nível ------------
+# =============== Primeiro nível =========================================================================
+
 # 2. Classe que herda a classe Resource para criação de um recurso para ser adicionada na API
 class Hoteis(Resource):
     def get(self):
@@ -74,23 +46,13 @@ class Hoteis(Resource):
         # -------- 4. realizando query, com/sem cidade ---------------------------------------------------
         # 4. com o get, recebemos none caso o parametro não existir -> mais seguro
         if not parametros.get('cidade'):
-            consulta = "SELECT * FROM hoteis \
-                        WHERE (estrelas >= ? and estrelas <= ?) \
-                        and (diaria >= ? and diaria <= ?) \
-                        LIMIT ? OFFSET ?"
             # 4. .execute recebe um tupla, e em parametros temos um dicionario, portanto:
             # receberemos uma tupla na ordem que determinamos em normalize_path_params
             tupla_parametros = tuple([parametros[chave] for chave in parametros])
-            resultado = cursor.execute(consulta, tupla_parametros)
+            resultado = cursor.execute(consulta_sem_cidade, tupla_parametros)
         else:
-            consulta = "SELECT  * FROM hoteis \
-                        WHERE   (estrelas >= ? and estrelas <= ?) \
-                                and (diaria >= ? and diaria <= ?) \
-                                and cidade = ? \
-                        LIMIT   ? \
-                        OFFSET  ?"
             tupla_parametros = tuple([parametros[chave] for chave in parametros])
-            resultado = cursor.execute(consulta, tupla_parametros)
+            resultado = cursor.execute(consulta_com_cidade, tupla_parametros)
         # -------- 4. queremos colocar o resultado numa lista de dicionários com a pesquisa dos parâmetros passados
         hoteis = []
         for linha in resultado:
@@ -107,7 +69,8 @@ class Hoteis(Resource):
         return {'hoteis': hoteis}
 
 
-# ------------- Segundo nível ------------
+# =============== Segundo nível ========================================================================
+
 class Hotel(Resource):
     # 3. só para o POST
     # definindo objeto construtor de tipo argumentos parseados

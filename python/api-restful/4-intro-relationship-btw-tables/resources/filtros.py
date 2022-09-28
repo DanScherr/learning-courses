@@ -13,7 +13,8 @@ def normalize_path_params(  cidade = None,
             'diaria_max': diaria_max,
             'cidade': cidade,
             'limit': limit,
-            'offset': offset
+            'offset': offset,
+            **dados
         }
     return {
             'estrelas_min': estrelas_min,
@@ -21,7 +22,8 @@ def normalize_path_params(  cidade = None,
             'diaria_min': diaria_min,
             'diaria_max': diaria_max,
             'limit': limit,
-            'offset': offset
+            'offset': offset,
+            **dados
         }
 
 
@@ -34,5 +36,5 @@ consulta_com_cidade = "SELECT  * FROM hoteis \
                         WHERE   (estrelas >= ? and estrelas <= ?) \
                                 and (diaria >= ? and diaria <= ?) \
                                 and cidade = ? \
-                        LIMIT   ? \
-                        OFFSET  ?"
+                                LIMIT   ? \
+                                OFFSET  ?"

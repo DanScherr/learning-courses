@@ -14,6 +14,7 @@ path_params.add_argument('diaria_min', type=float, location='values')
 path_params.add_argument('diaria_max', type=float, location='values')
 path_params.add_argument('limit', type=float, location='values')
 path_params.add_argument('offset', type=float, location='values')
+path_params.add_argument('site_id', type=float, location='values')
 
 
 
@@ -26,14 +27,12 @@ class Hoteis(Resource):
         dados = path_params.parse_args()
         dados_validos = {chave:dados[chave] for chave in dados if dados[chave] is not None}
         parametros = normalize_path_params(**dados_validos)
-
         if not parametros.get('cidade'):
             tupla_parametros = tuple([parametros[chave] for chave in parametros])
             resultado = cursor.execute(consulta_sem_cidade, tupla_parametros)
         else:
             tupla_parametros = tuple([parametros[chave] for chave in parametros])
             resultado = cursor.execute(consulta_com_cidade, tupla_parametros)
-
         hoteis = []
         for linha in resultado:
             hoteis.append(
@@ -59,7 +58,7 @@ class Hotel(Resource):
     argumentos.add_argument('estrelas', type=float, required=True, help="The field 'estrelas' cannot be left blank")
     argumentos.add_argument('diaria', type=float, required=False, help="The field 'diaria' cannot be left blank")
     argumentos.add_argument('cidade', type=str, required=False, help="The field 'cidade' cannot be left blank")
-    argumentos.add_argument('site_id', type=int, required=True, help='Every hotel has to be linked to a site.')
+    argumentos.add_argument('site_id', type=int, required=False, help='Every hotel has to be linked to a site.')
 
     def get(self, hotel_id):
         hotel_encontrado = HotelModel.find_hotel(hotel_id)

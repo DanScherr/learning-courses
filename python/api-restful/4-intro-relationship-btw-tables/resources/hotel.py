@@ -42,7 +42,8 @@ class Hoteis(Resource):
                     'nome': linha[1],
                     'estrelas': linha[2],
                     'diaria': linha[3],
-                    'cidade': linha[4]
+                    'cidade': linha[4],
+                    'site_id': linha[5]
                 }
             )
         return {'hoteis': hoteis}
@@ -58,6 +59,7 @@ class Hotel(Resource):
     argumentos.add_argument('estrelas', type=float, required=True, help="The field 'estrelas' cannot be left blank")
     argumentos.add_argument('diaria', type=float, required=False, help="The field 'diaria' cannot be left blank")
     argumentos.add_argument('cidade', type=str, required=False, help="The field 'cidade' cannot be left blank")
+    argumentos.add_argument('site_id', type=int, required=True, help='Every hotel has to be linked to a site.')
 
     def get(self, hotel_id):
         hotel_encontrado = HotelModel.find_hotel(hotel_id)

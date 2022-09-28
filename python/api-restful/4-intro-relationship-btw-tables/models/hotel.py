@@ -11,14 +11,18 @@ class HotelModel(banco.Model):
     estrelas = banco.Column(banco.Float(precision=1))
     diaria = banco.Column(banco.Float(precision=2))
     cidade = banco.Column(banco.String(40))
+    # 1. a foreign key references in its parameters, table_title.column
+    site_id = banco.Column(banco.Integer, banco.ForeignKey('sites.site_id'))
+    # site = banco.relationship('SiteModel') # se fosse nXn (muitos para muitos)
 
-
-    def __init__(self, hotel_id, nome, estrelas, diaria, cidade) -> None:
+    # 1. adicionar o site_id ao construtor
+    def __init__(self, hotel_id, nome, estrelas, diaria, cidade, site_id) -> None:
         self.hotel_id = hotel_id
         self.nome = nome
         self.estrelas = estrelas
         self.diaria = diaria
         self.cidade = cidade
+        self.site_id = site_id
 
     def json(self):
         return {
@@ -26,7 +30,8 @@ class HotelModel(banco.Model):
             'nome': self.nome,
             'estrelas': self.estrelas,
             'diaria': self.diaria,
-            'cidade': self.cidade
+            'cidade': self.cidade,
+            'site_id': self.site_id
         }
 
     @classmethod

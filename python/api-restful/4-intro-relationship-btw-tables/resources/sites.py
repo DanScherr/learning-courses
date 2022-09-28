@@ -1,3 +1,4 @@
+import site
 from flask_restful import Resource
 from models.site import SiteModel
 
@@ -22,6 +23,7 @@ class Site(Resource):
 
     def post(self, url):
         site_procurado = SiteModel.find_site(url)
+        print(site_procurado)
         if site_procurado:
             return {'message': f"The site '{site_procurado} already exists"}, 400
         novo_site = SiteModel(url)
@@ -32,10 +34,11 @@ class Site(Resource):
         return novo_site.json()
 
     def delete(self, url):
-        site = SiteModel.find_site(url)
-        if site:
+        site_procurado = SiteModel.find_site(url)
+        if site_procurado:
             try:
-                site.delete_site
+                site_procurado.delete_site()
+                return {"message": f"{site_procurado.url} deleted."}, 500
             except:
                 return {'message': 'An internal error ocurred trying to delete site'}, 500
         return {'message': 'Site not found'}, 404

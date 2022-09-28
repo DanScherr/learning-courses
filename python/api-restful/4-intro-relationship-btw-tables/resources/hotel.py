@@ -4,7 +4,7 @@ from models.hotel import HotelModel
 from flask_jwt_extended import jwt_required
 import sqlite3
 from resources.filtros import normalize_path_params, consulta_com_cidade, consulta_sem_cidade
-
+from models.site import SiteModel
 
 path_params = reqparse.RequestParser()
 path_params.add_argument('cidade', type=str, location='values')
@@ -73,12 +73,19 @@ class Hotel(Resource):
         if hotel_encontrado:
             return {'message': f"Hotel id '{hotel_id}' already exists."}, 400
         dados = Hotel.argumentos.parse_args()
-        novo_hotel = HotelModel(hotel_id, **dados)
+        # 1. before creating and saving hotel we need to check if site_id exists
+        site_id = dados['site_id']
+        if not SiteModel.find_site_by_id(site_id):
+            return {'message': 'The hotel must be associated to a valid site id.'}, 400
+        # 1. após checagem podemos criar um novo hotel com os dados recebidos e salvá-lo
+        # no nosso banco de dados
+        novo_hotel = HotelModel(hotel_id, **dados) 
         try:
             novo_hotel.save_hotel()
+            return novo_hotel.json(), 200
         except:
             return {'message:' 'An internal error ocurred trying to save hotel.'}, 500
-        return novo_hotel.json(), 200
+        
 
     @jwt_required()
     def put(self, hotel_id):

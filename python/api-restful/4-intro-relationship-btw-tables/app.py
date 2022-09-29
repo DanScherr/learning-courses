@@ -6,7 +6,7 @@ from flask_jwt_extended import JWTManager
 # ----- criação interna -----
 from resources.hotel import Hoteis, Hotel
 from resources.sites import Site, Sites
-from resources.usuario import User, UserRegister, UserLogin, UserLogout
+from resources.usuario import User, UserConfirm, UserRegister, UserLogin, UserLogout
 from blacklist import BLACKLIST
 
 
@@ -41,9 +41,10 @@ api.add_resource(Hotel, '/hoteis/<string:hotel_id>')
 api.add_resource(User, '/usuarios/<int:user_id>')
 api.add_resource(UserRegister, '/cadastro_usuario')
 api.add_resource(UserLogin, '/login')
-api.add_resource(UserLogout,'/logout')
-api.add_resource(Sites,'/sites')
-api.add_resource(Site,'/sites/<string:url>')
+api.add_resource(UserLogout, '/logout')
+api.add_resource(Sites, '/sites')
+api.add_resource(Site, '/sites/<string:url>')
+api.add_resource(UserConfirm, '/confirmacao/<int:user_id>')
 
 
 # ================ configuracoes para quando o arquivo é executado como main =================

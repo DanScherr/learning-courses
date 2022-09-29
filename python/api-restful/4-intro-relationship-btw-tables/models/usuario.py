@@ -4,8 +4,8 @@ from flask import request, url_for
 from requests import post
 
 # 2. Definindo variaveis globais para o post de confirmação de email
-MAILGUN_DOMAIN = 'sandbox7edea9be4ca642f9bc617f331f2be7c9.mailgun.org'
-MAILGUN_API_KEY = '05c2756079bf93cc0a9d7f35ca632181-4534758e-1e223f23'
+MAILGUN_DOMAIN = 
+MAILGUN_API_KEY = 
 FROM_TITLE = 'No-REPLY'
 FROM_EMAIL = 'no-reply@restapihoteis.com'
 

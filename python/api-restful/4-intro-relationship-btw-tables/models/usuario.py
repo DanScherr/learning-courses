@@ -2,9 +2,9 @@ from urllib import request
 from sql_alchemy import banco
 from flask import request, url_for
 from requests import post
-from dotenv import load_dotenv, dotenv_values
+from dotenv import dotenv_values
 
-env_vars = dotenv_values(".env")
+env_vars = dotenv_values("./ambvir/.env")
 
 class UserModel(banco.Model):
 

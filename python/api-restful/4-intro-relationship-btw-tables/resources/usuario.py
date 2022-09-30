@@ -3,6 +3,7 @@ from models.usuario import UserModel
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt
 from werkzeug.security import hmac
 from blacklist import BLACKLIST
+from flask import make_response, render_template
 # 2.
 import traceback
 
@@ -121,5 +122,7 @@ class UserConfirm(Resource):
 
         user.ativado = True
         user.save_user()
-        return {"message": f"User id '{user_id}' confirmed successfully."}, 200
+        # return {"message": f"User id '{user_id}' confirmed successfully."}, 200
+        headers = {'Content-Type': 'text/html'}
+        return make_response(render_template('user_confirm.html', email=user.email, usuario=user.login), 200)
 

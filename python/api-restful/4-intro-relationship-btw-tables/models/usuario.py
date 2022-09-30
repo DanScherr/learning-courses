@@ -2,14 +2,9 @@ from urllib import request
 from sql_alchemy import banco
 from flask import request, url_for
 from requests import post
+from dotenv import load_dotenv, dotenv_values
 
-# 2. Definindo variaveis globais para o post de confirmação de email
-MAILGUN_DOMAIN = 'sandbox7edea9be4ca642f9bc617f331f2be7c9.mailgun.org'
-MAILGUN_API_KEY = '05c2756079bf93cc0a9d7f35ca632181-4534758e-1e223f23'
-FROM_TITLE = 'No-REPLY'
-FROM_EMAIL = 'no-reply@restapihoteis.com'
-
-
+env_vars = dotenv_values(".env")
 
 class UserModel(banco.Model):
 
@@ -34,14 +29,14 @@ class UserModel(banco.Model):
         print(f' O USUARIO ----> {self.user_id}')
         print(self.email)
         link = request.url_root[:-1] + url_for('userconfirm', user_id=self.user_id)
-        print(link)
+        print(env_vars['MAILGUN_API_KEY'])
         # request.url_root[:-1] # http://127.0.0.1:5000
         # 2.0 estaremos iterando a url do resource UserConfirm
         # url_for('userconfirm', self.user_id) # confirmacao/{user_id}
         return post(
-                    f"https://api.mailgun.net/v3/{MAILGUN_DOMAIN}/messages",
-                    auth=   (   "api", f"{MAILGUN_API_KEY}"),                      # authorization with api key from mailgun
-                    data=   {  "from": f"{FROM_TITLE} <{FROM_EMAIL}>",     # name and email
+                    f"https://api.mailgun.net/v3/{env_vars['MAILGUN_DOMAIN']}/messages",
+                    auth=   (   "api", f"{env_vars['MAILGUN_API_KEY']}"),                      # authorization with api key from mailgun
+                    data=   {  "from": f"{env_vars['FROM_TITLE']} <{env_vars['FROM_EMAIL']}>",     # name and email
                                 "to": self.email,                         # can put a list
                                 "subject": "Confirmação de cadastro",          # title
                                 "text": f"Confirme seu cadastro clicando\

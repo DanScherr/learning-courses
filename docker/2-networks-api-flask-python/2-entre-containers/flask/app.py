@@ -1,9 +1,18 @@
 import flask
 from flask import request, json, jsonify
 import requests
+from flask_mysqldb import MySQL
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
+
+# como os containers estaraão conectados na mesma rede, poderemos passar o container do mysql criado
+app.config["MYSQL_HOST"] = 'mysqlapicontainer'
+app.config["MYSQL_USER"] = 'root'
+app.config["MYSQL_PASSWORD"] = ''
+app.config["MYSQL_DB"] = 'flaskdocker'
+
+mysql = MySQL(app)
 
 # def rota
 @app.route("/", methods=["GET"])

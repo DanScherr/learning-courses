@@ -3,6 +3,7 @@
 
 ***
 
+| | ico | shortcode | ico | shortcode | |
 | [/](#1) | [/bin/](#1bin2) | [/etc]() | [/home]() |
 | [/opt]() | [/tmp/]() | [/usr/]() | [/var/]() |
 | [/boot/]() | [/cdrom/]() | [/cgroup/]() | [/dev/]() |

@@ -5,7 +5,7 @@
 
 | |  |  |  |
 | - | :-: | - | :-: |
-| [/](#) | [/bin/](#bin) | [/etc](#etc | [/home](#home) |
+| [/](#) | [/bin/](#bin) | [/etc](#etc) | [/home](#home) |
 | [/opt](#opt) | [/tmp/](#tmp) | [/usr/](#usr) | [/var/](#var) |
 | [/boot/](#boot) | [/cdrom/](#cdrom) | [/cgroup/](#cgroup) | [/dev/](#dev) |
 | [/export/](#export) | [/lib/](#lib) | [/lib64/](#lib64) | [/lost+found/](#lostfound) |

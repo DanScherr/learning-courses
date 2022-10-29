@@ -5,12 +5,12 @@
 
 | |  |  |  |
 | - | :-: | - | :-: |
-| [/](#1) | [/bin/](#1bin2) | [/etc]() | [/home]() |
-| [/opt]() | [/tmp/]() | [/usr/]() | [/var/]() |
-| [/boot/]() | [/cdrom/]() | [/cgroup/]() | [/dev/]() |
-| [/export/]() | [/lib/]() | [/lib64/]() | [/lost+found/]() |
-| [/lib/]() | [/mnt/]() | [/proc/]() | [/root/]() |
-| [/selinux/]() | [/srv/]() | [/sys/]() | [go back.](../) |
+| [/](#1) | [/bin/](#1bin2) | [/etc](#1etc2) | [/home](#1home2) |
+| [/opt](#1opt2) | [/tmp/](#1tmp2) | [/usr/](#1usr2) | [/var/](#1var2) |
+| [/boot/](#1boot2) | [/cdrom/](#1cdrom2) | [/cgroup/](#1cgroup2) | [/dev/](#1dev2) |
+| [/export/](#1export2) | [/lib/](#1lib2) | [/lib64/](#1lib642) | [/lost+found/](#1lostfound2) |
+| [/lib/](#1lib2) | [/mnt/](#1mnt2) | [/proc/](#1proc2) | [/root/](#1root2) |
+| [/selinux/](#1selinux2) | [/srv/](#1srv2) | [/sys/](#1sys2) | [go back.](../) |
 
 
 ***

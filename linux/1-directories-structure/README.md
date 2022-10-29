@@ -3,6 +3,16 @@
 
 ***
 
+| [/](#1) | [/bin/](#1bin2) | [/etc]() | [/home]() |
+| [/opt]() | [/tmp/]() | [/usr/]() | [/var/]() |
+| [/boot/]() | [/cdrom/]() | [/cgroup/]() | [/dev/]() |
+| [/export/]() | [/lib/]() | [/lib64/]() | [/lost+found/]() |
+| [/lib/]() | [/mnt/]() | [/proc/]() | [/root/]() |
+| [/selinux/]() | [/srv/]() | [/sys/]() | []() |
+
+
+***
+
 * ## <sup>1</sup>/ :
 > **Root.**
 > The top of the file systema hierarchy.

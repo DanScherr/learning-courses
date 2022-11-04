@@ -1,96 +1,30 @@
 # :student: Linux Studies :penguin:
 * This folder contains the studies of **directories structures** of linux (general).
-***
-
-* /
-
 
 ***
 
-| |  |  |  |
-| - | :-: | - | :-: |
-| [/](#) | [/bin/](#bin) | [/etc](#etc) | [/home](#home) |
-| [/opt](#opt) | [/tmp/](#tmp) | [/usr/](#usr) | [/var/](#var) |
-| [/boot/](#boot) | [/cdrom/](#cdrom) | [/cgroup/](#cgroup) | [/dev/](#dev) |
-| [/export/](#export) | [/lib/](#lib) | [/lib64/](#lib64) | [/lost+found/](#lostfound) |
-| [/lib/](#lib) | [/mnt/](#mnt) | [/proc/](#proc) | [/root/](#root) |
-| [/selinux/](#selinux) | [/srv/](#srv) | [/sys/](#sys) | [go back.](../) |
-
-
-***
-<ol>
-    <li>
-        /
-    </li>
-    <ol type="I">
-        <li>
-            [/bin/](#bin)
-        </li>
-        <li>
-            /etc/
-        </li>
-        <li>
-            /home/
-        </li>
-        <li>
-            /opt/
-        </li>
-        <li>
-            /tmp/
-        </li>
-        <li>
-            /usr/
-        </li>
-        <li>
-            /var/
-        </li>
-        <li>
-            /boot/
-        </li>
-        <li>
-            /cdrom/
-        </li>
-        <li>
-            /cgroup/
-        </li>
-        <li>
-            /dev/
-        </li>
-        <li>
-            /export/
-        </li>
-        <li>
-            /lib/
-        </li>
-        <li>
-            /lib64/
-        </li>
-        <li>
-            /lost+found/
-        </li>
-        <li>
-            /media/
-        </li>
-        <li>
-            /mnt/
-        </li>
-        <li>
-            /proc/
-        </li>
-        <li>
-            /root/
-        </li>
-        <li>
-            /selinux/
-        </li>
-        <li>
-            /srv/
-        </li>
-        <li>
-            /sys
-        </li>
-    </ol>
-</ol>
+1. [/](#)
+    1. [/bin/](#bin)
+    1. [/etc/](#etc)
+    1. [/home/](#home)
+    1. [/opt/](#opt)
+    1. [/tmp/](#tmp)
+    1. [/usr](#usr)
+    1. [/var/](#var)
+    1. [/boot/](#boot)
+    1. [/cdrom/](#cdrom)
+    1. [/cgroup/](#cgroup)
+    1. [/dev/](#dev)
+    1. [/export/](#export)
+    1. [/lib/](#lib)
+    1. [/lib64/](#lib64)
+    1. [/lost+found/](#lostfound)
+    1. [/mnt/](#mnt)
+    1. [/proc/](#proc)
+    1. [/root/](#root)
+    1. [/selinux/](#selinux)
+    1. [/srv/](#srv)
+    1. [/sys/](#sys)
 
 * ## / :
 
@@ -203,10 +137,11 @@
 <br>
 
 *  ## /srv/ :
-
-> **Contains data which is served by the system (linux server).**
-<br>- /srv/www/: Web server files.
-<br>- /srv/ftp/: FTP files.
+    > **Contains data which is served by the system (linux server).**
+    - ### /srv/www/:
+        > Web server files
+    - ### /srv/ftp/:
+        > FTP files.
 
 *  ## /sys/ :
 

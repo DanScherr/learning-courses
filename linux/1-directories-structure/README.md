@@ -1,5 +1,9 @@
 # :student: Linux Studies :penguin:
 * This folder contains the studies of **directories structures** of linux (general).
+***
+
+* /
+
 
 ***
 
@@ -14,39 +18,114 @@
 
 
 ***
+<ol>
+    <li>
+        /
+    </li>
+    <ol type="I">
+        <li>
+            [/bin/](#bin)
+        </li>
+        <li>
+            /etc/
+        </li>
+        <li>
+            /home/
+        </li>
+        <li>
+            /opt/
+        </li>
+        <li>
+            /tmp/
+        </li>
+        <li>
+            /usr/
+        </li>
+        <li>
+            /var/
+        </li>
+        <li>
+            /boot/
+        </li>
+        <li>
+            /cdrom/
+        </li>
+        <li>
+            /cgroup/
+        </li>
+        <li>
+            /dev/
+        </li>
+        <li>
+            /export/
+        </li>
+        <li>
+            /lib/
+        </li>
+        <li>
+            /lib64/
+        </li>
+        <li>
+            /lost+found/
+        </li>
+        <li>
+            /media/
+        </li>
+        <li>
+            /mnt/
+        </li>
+        <li>
+            /proc/
+        </li>
+        <li>
+            /root/
+        </li>
+        <li>
+            /selinux/
+        </li>
+        <li>
+            /srv/
+        </li>
+        <li>
+            /sys
+        </li>
+    </ol>
+</ol>
 
 * ## / :
 
 > **Root.**
 > The top of the file systema hierarchy.
 
-* ## /bin/ :
+- ## /bin/ :
 
 > **Binaries** (0's and 1's) and other
 >**executable programs** (source code -> human readible text).
 
-* ## /etc/ :
+- ## /etc/ :
 
-> **System configuration** files. <br>- Controls how the OS and applications behave. <br>- Ex: flash file tells either to boot on text or interface mode.
+> **System configuration** files. 
+<br>- Controls how the OS and applications behave. 
+<br>- Ex: flash file tells either to boot on text or interface mode.
 
-* ## /home/ : 
+- ## /home/ : 
 
 > **Home directories**.
 <br> /home/%user%/
 <br>- Where you can separete your data from anothers accounts data.
 
-* ## /opt/ :
+- ## /opt/ :
 
 > **Optional or third party software**.
 <br>- Not bundled with the operating system.
 
-* ## /tmp/ :
+- ## /tmp/ :
 
 > **Temporary space**.
 <br>- Typically cleared on reboot.
 <br>- Greate to store temporary files.
 
-* ## /usr/ :
+- ## /usr/ :
 
 > **User related programs**.
 <br>- In its subdirectories will find binary and executables for each user.
@@ -54,7 +133,7 @@
 <br>- /usr/local/: Locally installed soft that is not part of the operating system.
 <br>- /usr/sbin/: System administration binaries.
 
-* ## /var/ :
+- ## /var/ :
 
 > **Variable data.**
 <br>- Most notably log files.

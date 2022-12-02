@@ -50,6 +50,7 @@
 <br>
 
 - ## **Conceitos fundamentais**:
+    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
     - ### Nodes: instância (maquina) que participa do swarm
     - ### Manager Node: que gerencia
     Worker Node: que trabalham em função do manager (operario)
@@ -59,6 +60,7 @@
 <br>
 
 - ## **Iniciando na aws**:
+    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
     - Recomendável ir salvando IDs tokens, portas, etc em um arquivo.
     - *for more information on how swarm works, [follow](https://docs.docker.com/engine/swarm/how-swarm-mode-works/services/).*
     - ### Criando Instancias 
@@ -69,6 +71,7 @@
         - alterar: ***security group*** -> clicar no id do servidor -> editar regras de entrada -> configurar conforme imagem a baixo.
         ![imagem](./images/regras-de-entrada-redes-portas.png)
     - ### Iniciar instâncias:
+
         - (mudar para estado 'executando'; 'Estado de insância'; conforme imagem a baixo)
         ![imagem-executando-instancias](./images/executando-instancias.png)
     - ### Escolher ***Manager*** e executar o swarm:
@@ -96,12 +99,14 @@
 <br>
 
 - ## **Monitoramento**:
+    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
     - ```$ docker node ls```
     - Serviços serão exibidos no terminal
 
 <br>
 
 - ## **Adicionando novos Nodes**:
+    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
     - ```$ docker swarm join --token <token><IP>:<PORTA>```
     - Desta forma duas máquinas estarão conectadas.
     - Esta nova máquina entra na hierarquia como ***Worker***.
@@ -110,6 +115,7 @@
 <br>
 
 - ## **Removendo nodes**:
+    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
     - ### Para inativar o node:
         - ```$ sudo docker swarm leave```
     - ### Para remover totalmente (inclusive da listagem de nodes):
@@ -118,6 +124,7 @@
 <br>
 
 - ## **Subindo um serviço para o lider na AWS (container)**:
+    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
     - *for more information on how services on docker works, [follow](https://docs.docker.com/engine/reference/commandline/service/).*
     - ### Comando para subir serviço com swarm:
         - $ ```docker service create --name <nome><imagem>```
@@ -144,6 +151,7 @@
 <br>
 
 - ## **Aumentando número de réplicas**:
+    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
     - ### Criando serviço com réplicas:
         - ```$ docker service create --name <nome> --replicas <numero> <imagem>```
         - Desta maneira uma task será emitida, replicando este serviço nos workers
@@ -159,6 +167,7 @@
 <br>
 
 - ## Copiando arquivos para a instância na AWS:
+    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
 - *for more information about sftp communication using ssh, [follow](https://www.ssh.com/academy/ssh/sftp)*
 
     - Usando comando scp (secure copy):
@@ -168,6 +177,7 @@
 ***
 
 - ## **Section 8, a partir 134:**
+    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
 - Reação do Swarm quando se remove um container de um worker:
     - Quando um container é removido do node worker, o docker reinicia este container novamente por conta do serviço ainda estar rodando no Manager (isto é uma de suas atribuições, garantir que os serviços estejam sempre disponíveis).
     - É necessário utilizar o force (-f).

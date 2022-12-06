@@ -31,7 +31,7 @@
     - [Aumentando número de réplicas](#aumentando-número-de-réplicas)
         - [Criando serviço com réplicas](#criando-serviço-com-réplicas)
         - [Atualizando número de réplicas com serviço já criado](#atualizando-número-de-réplicas-com-serviço-já-criado)
-
+    - [Deletando Container de um Node com o Swarm](#deletando-container-de-um-node-com-o-swarm)
 
 ***
 
@@ -142,6 +142,9 @@
         - ```$ docker service ls```
     - ### Para inspecionarmos serviços:
         - ```docker service inspect <ID>```
+    - ### Histórico de containers rodados:
+        - ```$ docker service ps <ID>```
+        - Necessário rodar no Manager.
     - ***Obs***: node é a maquina que estamos rodando com o swarm e service é o projeto que estamos rodando. só que não obrigatoriamente tem-se um projeto rodando que é necessário que estejam rodando todas as máquinas com swarm. então é bom saber separar as coisas pra saber o que está rodando como serviço e como está rodando como node. 
         - ```$ node ls``` -> máquinas conectadas
         - ```$ service ls``` -> projetos rodando
@@ -163,8 +166,68 @@
         - Pode-se checar o status com:
             - ```$ docker service ls```
     - Pode-se verificar, também, containers rodando nos outros nodes com o ```$ docker ps```.
-    
+
 <br>
+
+- ## *Deletando Container de um Node com o Swarm:**
+    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+- Reação do Swarm quando se remove um container de um worker:
+    - Quando um container é removido do node worker, o docker reinicia este container novamente por conta do serviço ainda estar rodando no Manager (isto é uma de suas atribuições, garantir que os serviços estejam sempre disponíveis).
+    - É necessário utilizar o force (-f).
+
+<br>
+
+
+- ## **Rodando compose com Swarm**
+    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+    - ### Criando uma stack:
+        - ```$ docker stack deploy -c <ARQUIVO.YAML>  <NOME>```
+        - Isso fará com que o compose seja executado no modo swarm e, com isos, podemos utilizar os nodes como réplicas.
+    - ### Escalando nodes:
+        - ```$ docker service scale <NOME_SERVIÇO>=<NUMERO_DE_REPLICAS>```
+
+<br>
+
+- ## **Fazer com que um Container (node) não receba mais Tasks**
+    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+    - Serviço não receberá mais ordens do ***Manager*** (ficará rodando de forma independente).
+    - ```$ docker node update --availability drain <ID>```
+        - Talvez seja interessante executar o ```$ docker node ls``` antes para pegar o ID
+    - Status ***drain*** é o que não recebe mais tasks.
+    - O Swarm, para manter o mesmo número de replicas, passará o container (replica) do Node que está como drain para outro Worker (que ficará com 2 containers).
+
+<br>
+
+- ## **Atualizando a imagem em uso nos nodes ativos com o Swarm**
+    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+    - ```$ docker service update --image <NOME-IMAGEM> <SERVIÇO>```
+    - Atualiza apenas os nodes ativos.
+        - Se um node estiver como drain, não será atualizado
+
+<br>
+
+- ## **Ressetando Node com container que estava como Drain**
+    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+    - ```$ docker node update --availability active <NODE-ID>```
+        - Atualiza status do node para ativo
+    - ```$ docker service update --image nginx:latest <SERVICE-ID>```
+        - Realiza atualização do serviço no qual o node que restartamos faz parte.
+        - Com isso, o container que estava no outro worker (tinham 2) volta para o node que passamos para ativo.
+    - Caso seja necessário, pode-se ***rebalancear os nodes*** com ```$ docker service update --init <SERVICE-ID>```
+<br>
+
+- ## **Criando rede para o Swarm**
+    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+    - Driver: overlay
+    - Sem ter criado o serviço
+        - Cria-se a rede antes com o ```$ docker network create```
+            - ex: ```$ docker network create --driver overlay swarm```
+        - Em seguida, cria-se um service com a flag ```--network <REDE>```, para se inserir as instâncias da nova rede.
+    - Já tendo criado o serviço
+        - Cria-se a rede antes com o ```$ docker network create```
+        - Em seguida, atualiza-se o service com o comando ```docker service update --network-add name=<NETWORK-NAME>, alias=<ALIAS> <SERVICE>```, para se inserir as instâncias da nova rede.
+
+
 
 - ## Copiando arquivos para a instância na AWS:
     [:top: Voltar ao topo](#whale-swarm--aws-cloud)
@@ -173,18 +236,12 @@
     - Usando comando scp (secure copy):
         - ```$ scp -i "~/.ssh/aws-key.pem" "index.html" ec2-user@ec2-3-89-27-181.compute-1.amazonaws.com:~/```
 
-
 ***
 
-- ## **Section 8, a partir 134:**
-    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
-- Reação do Swarm quando se remove um container de um worker:
-    - Quando um container é removido do node worker, o docker reinicia este container novamente por conta do serviço ainda estar rodando no Manager (isto é uma de suas atribuições, garantir que os serviços estejam sempre disponíveis).
-    - É necessário utilizar o force (-f).
+<br>
 
 - OBS: A conexão SSH com os servidores da AWS, caem conforme um certo tempo. Para que nossa conexão mantenha a conexão, através de um ping enviado a cada constante de tempo, podemos configurar o arquivo config da pasta .ssh/:
     - ```vim home/{user}/.ssh/config```
     - Escreva:
         - ServerAliveInterval 3600 
             - onde 3600 é o intervalo de tempo
-    

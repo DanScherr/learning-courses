@@ -56,7 +56,9 @@
     - ### Deployment:
         - Criação de serviço que vai rodar no Pods, definindo uma imagem e um nome, para, posteriormente, ser replicado entre os servidores.
         - É preciso que a imagem esteja no Hub do Docker, para gerar um Deployment.
-        - Exemplo:
+        - ### **Exemplo:** <br>
+            ***Python com Flask, Dockerfile e index.html:***
+            - ```$ docker build -t <NOME-USUARIO>/flask-kubernetes-projeto .```
 
 
     <br>

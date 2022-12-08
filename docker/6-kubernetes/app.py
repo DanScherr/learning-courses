@@ -1,12 +1,12 @@
 import flask
-from flask import flask, render_template
+from flask import Flask, render_template
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
 @app.route('/')
 def index():
-    return render_template('html.index')
+    return render_template('index.html')
 
 
 if __name__ == "__main__":

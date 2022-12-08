@@ -5,8 +5,8 @@ RUN apt-get update -y && \
 
 WORKDIR /app
 
-RUN pip install Flask
+RUN pip3 install Flask
 
 COPY . .
 
-CMD ["python", "./app.py"]
+CMD ["python3", "./app.py"]

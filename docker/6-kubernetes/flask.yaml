@@ -1,0 +1,24 @@
+apiVersion: apps/v1 #versão do arquivo yaml
+
+kind: Deployment #tipo do arquivo yaml
+
+metadata: #metadata deste arquivo yaml de deployment
+  name: flask-deployment
+
+spec: # especificações
+  replicas: 4 # vai ter 4 réplicas
+
+  selector:
+    matchLabels: # irá dar match com outras labels app: flask-app quando for gerenciar, necessário para criar links até mesmo com yaml de serviço
+      app: flask-app # vai ter um aplicativo chamado flask-app
+
+  template: # template para manter as réplicas iguais
+    metadata:
+      labels:
+        app: flask-app # nome do template para cada réplica chamado flask-app
+    spec:
+      containers:
+        - name: flask # nome da imagem do template para cada réplica
+          image: danielschei/flask-kubernetes-projeto:2 # imagem que será utilizada para cada réplica
+
+# end

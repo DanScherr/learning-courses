@@ -1,0 +1,17 @@
+apiVersion: v1 # v1 já satisfaz
+
+kind: Service
+
+metadata:
+  name: flask-service
+
+spec:
+  selector: # seleciona um dos selectors (no nosso caso so temos 1) para externalizar
+    app: flask-app
+  
+  ports: # expondo porta para o serviço
+    - protocol: 'TCP' 
+      port: 5000
+      targetPort: 5000
+  
+  type: LoadBalancer

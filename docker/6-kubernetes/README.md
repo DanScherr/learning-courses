@@ -179,7 +179,6 @@
 
 
     6. ### **Deletar Serviço**:
-
         [:top: Voltar ao topo](#whale-swarm--aws-cloud)
 
         - ```$ kubectl delete service <NOME>```
@@ -200,15 +199,71 @@
     <br>
 
 - ## **Kubernetes modo Declarativo**:
-
-
-
-```$ ```
-
-    <br>
-
-- ## ****
     [:top: Voltar ao topo](#whale-swarm--aws-cloud)
-    -
+    - Escrito em YAML.
+    - Para projetos mais complexos.
+    1. ### **Chaves mais utilizadas para criar o arquivo YAML:**
+        - **apiVersion**: versão utilizada pela ferramenta;
+        - **kind**: tipo do arquivo (Deployment, Service);
+        - **metadata**: descrever algum objeto, inserindo chaves como 'name';
+        - **replicas**: número de réplicas de Nodes/Pods;
+        - **containers**: definir especificações de containers como: nome e imagem.
 
     <br>
+    
+    2. ### **Criando um Deployment:**
+        [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+        Kind = Deployment.
+        1. ### Executando:
+            - ```$ kubectl apply -f <ARQUIVO>```
+            - Temos que estar localizados (prompt) na pasta onde se encontra o arquivo YAML.
+        
+        2. ### Parando o Deployment:
+            - ```$ kubectl delete -f <ARQUIVO>```
+
+    <br>
+    
+    3. ### **Criando um Service:**
+        [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+        Kind = Service.
+        1. ### Executando:
+            - ```$ kubectl apply -f <ARQUIVO>```
+            - Temos que estar localizados (prompt) na pasta onde se encontra o arquivo YAML.
+
+        2. ### Necessário gerar o IP de acesso no Minikube:
+            - ```$ minkube service <NOME>```
+
+        ![](./images/deploy-de-atualizacao-de-imagem.png)
+
+        3. ### Deletando serviço:
+            - ```$ kubectl delete -f <ARQUIVO>```
+            - Perde-se o acesso ao projeto.
+
+    <br>
+        
+    4. ### **Atualizando um projeto:**
+        [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+        1. Criar nova versão de Imagem;
+        2. Realizar push;
+        3. Altera no arquivo YAML de Deployment a tag no seletor 'image:';
+
+        ![](./images/atualizando-imaegem-flask-yaml.png)
+
+        4. Reaplicar o comando de apply para o arquivo de Deployment.
+    
+    <br>
+
+    5. ### **Unindo Deployment e Service em um arquivo só:**
+        [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+        - A separação de objetos para o YAML é com: ---
+        - Uma boa prática é colocar o service antes do deployment
+        1. ### Executando:
+            - ```$ kubectl apply -f <ARQUIVO>```
+            - Temos que estar localizados (prompt) na pasta onde se encontra o arquivo YAML.
+
+            ![](./images/falsk-compose-created.png)
+
+            2. ### Necessário gerar o IP de acesso no Minikube:
+            - ```$ minkube service <NOME>```
+            
+            ![](./images/deploy-de-atualizacao-de-imagem.png)

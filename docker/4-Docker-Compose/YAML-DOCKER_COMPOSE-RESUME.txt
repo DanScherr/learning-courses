@@ -1,0 +1,129 @@
+YAML
+
+-> Dicionarios marcados por enters e identações.
+	|-> Identações sao chaves internas.
+	|-> Enters identificam camadas diferentes.
+	|-> Exemplo:
+	versao: 2	
+	versao_completa: 3.2
+	objeto:
+		versao: 2
+		arquivo: "teste.txt"
+	
+	|-> Resultado:
+	>versao:2
+	>versao_completa:3.2
+	>objeto: {'versao': 2, 'arquivo': 'texte.txt'}
+
+
+-> Inserção de dados nos valores:
+Strings:
+	|-> Com e sem aspas (para usar caracteres especiais).
+
+Numeros:
+	|-> Int e Float.
+
+Dados nulos (none):
+	|-> ~ ou null.
+
+Booleanos:
+	|-> True e On (verdadeiro); False e Off (falso).
+
+Arrays (podem ser diversos):
+	|-> 1)	items: [1,2,3,4]
+	|-> 2)	items:
+			- 1
+			- 'teste'
+			- 3.4
+			- Off
+
+Dicionários:
+	|-> obj: {a: 1, b: 2, c: 3}
+	|-> obj:
+		chave: 1
+		chave: 2
+
+Docker Compose:
+> Ferramenta para rodar multiplos containers
+> Um arquivo de configuração que orquestra totalmente a situação
+> É uma forma de rodar multiplos builds and runs
+> Essencial em projetos maiores
+
+> chaves mais utilizadas:
+	|-> version: versão do docker compose
+	|-> services: Containers/serviços que vao rodar na orquestração do docker compose
+	|-> volumes: possivel adição de volumes que irá rodar na orquestração do docker compose
+-----------------------------------------------------------------------------------------------------------------
+> exemplo:
+version: '3.3'
+services:
+	db: # container de MYSQL (dá o nome que quiser)
+		image: mysql:5.7
+		volumes:
+			- db_data:/var/lib/mysql
+		restart: always # todas as alterações do doc docker compose seram automaticamente atualizadas
+		environment:
+			MYSQL_ROOT_PASSWORD: wordpress
+			MYSQL_DATABASE: wordpress
+			MYSQL_USER: matheus
+			MYSQL_PASSWORD: secret
+
+
+	wordpress:
+		depends_on: # executa primeiro os containers que a lista diz que depende
+			- db
+		image: wordpress:latest
+		ports:
+			- "8000:80" # conexão entre host e container
+		# entre os serviços realiza-se uma conexão bridge
+		restart: always
+		environment:
+			WORDPRESS_DB_HOST: db:3306
+			WORDPRESS_DB_USER: matheus
+			WORDPRESS_DB_PASSWORD: secret
+			WORDPRESS_DB_NAME: wordpress
+
+volumes:
+	db_data: {}
+-----------------------------------------------------------------------------------------------------
+
+
+Variáveis de ambiente:
+	|-> Definir as variaveis em um arquivo '.env'
+		|-> normalmente com o nome do container (pois podemos ter varios ambientes)
+		|-> normalmente posto na pasta confi/
+	|-> env_file: -> chave que deverá ser declarada o path do .env
+		|-> abaixo de env_file (como se fosse lista), deve-se colocar o caminho para o .env
+	|-> copiar da mesma forma que foi settado na chave environment, apenas trocar ':' por '='. 
+		|-> recomendável não usar espaços entre as aspas
+	|-> Poderão ser chamadas pela sintaxe ${VARIAVEL}
+
+
+Redes no compose:
+> cria uma rede básica Bridge entre os containers da aplicação
+> porem podemos isolar as redes com a chave network
+> assim podemos conectar apenas os containers que optarmos
+> e também podemos definir drivers difertentes
+> deve-se declarar pela chave 'networks:' em cada container em que se vai conectá-las
+e também, fora da declaração dos containers, como chave abstrata com os mesmos nomes declarados nos containers
+com os nomes das networks (apenas, pois a configuração se dará na chave abstrata) como listas
+> podem ser declarados outros driver com uma chave concatenada a baixo do nome da sua network, caso queria,
+na chave network abstrata (não a dentro dos containers)
+	|-> como padrão, é setado 'bridge'
+
+
+Pode-se criar Docker Compose com imagens criadas (Dockerfile):
+	|-> deve-se buildar as imagens antes com os nomes que serão usados nas chave do compose
+Pode-se também fazer o build das imagens que serão usadas no compose no proprio arquivo compose, settando elas
+	|-> faz-se pela chave 'build:./local_pasta/'
+	|-> necessário ver se compensa pois sempre que for dar o up do compose novamente, irá rebuildar as imagens
+
+Usar o Bind Mount no Compose, garantindo atualização em tempo real:
+	|-> necessário compartilhar unidade (driver) de compartilhamento no docker desktop
+		|-> resources -> file sharing
+		|-> caso contrário ele irá utilizar apenas o drive em que está instalado o docker (prov o c:)
+	|-> inserir na chave 'volumes:' nos containers que se deseja compartilhar com o host
+	|-> sendo Bind Mount, não é necessário declarar na chave de volumes abstrata
+
+Resumo dos serviços do Docker Compose
+$ docker-compose ps

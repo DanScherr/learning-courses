@@ -16,6 +16,7 @@
         3. [Replicando nossa aplicação](#replicando-nossa-aplicação)
         4. [Atualizando a imadem do projeto](#atualizando-a-imagem-do-projeto)
         5. [Fazer rollback do projeto](#fazer-rollback-do-projeto)
+        6. [Deletar serviço](#deletar-serviço)
         7. [Deletar deployment](#deletar-deployment)
     - [Kubernetes modo declarativo](#kubernetes-modo-declarativo)
 
@@ -177,7 +178,7 @@
     <br>
 
 
-    6. **Deletar Serviço**:
+    6. ### **Deletar Serviço**:
 
         [:top: Voltar ao topo](#whale-swarm--aws-cloud)
 
@@ -188,7 +189,7 @@
     <br>
 
 
-    7. **Deletar Deployment**
+    7. ### **Deletar Deployment**
         [:top: Voltar ao topo](#whale-swarm--aws-cloud)
 
         - ```$ kubectl delete deployment <NOME>```

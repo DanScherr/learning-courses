@@ -270,4 +270,4 @@
 
             ***
 
-            ![](./../../../ibm-school-of-data_engineering/images/the-end-img.png)
+            ![](./../../images/the-end-img.png)

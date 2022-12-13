@@ -1,6 +1,6 @@
 # **Learning Courses:**
 
-## :whale: **SWARM + AWS** :cloud:
+## :sailboat: **Kubernetes + Minikube** :game_die:
 
 <br>
 

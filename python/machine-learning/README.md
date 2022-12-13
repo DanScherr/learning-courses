@@ -11,7 +11,10 @@
 # Introdução:
 [:top: ***Voltar ao topo***](#learning-courses)
 
-
+- ## Dealing with data:
+    - **Pandas**: Load, manipulate and clean it up.
+    - **NumPy**: translated from Pandas to store data (multi-dimensional array objects) that facilitates high performance.
+    - **Scikut_Learn**: machine learning library, to deal with the data.
 
 ***
 

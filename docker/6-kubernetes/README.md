@@ -270,4 +270,4 @@
 
             ***
 
-            ![](./../../images/the-end-img.png)
+            <img src="./../../images/the-end-img.png" width="50%">

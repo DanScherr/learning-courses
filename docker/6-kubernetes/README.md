@@ -267,3 +267,7 @@
             - ```$ minkube service <NOME>```
             
             ![](./images/deploy-de-atualizacao-de-imagem.png)
+
+            ***
+
+            ![](./../../../ibm-school-of-data_engineering/images/the-end-img.png)

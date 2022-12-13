@@ -1,4 +1,6 @@
-# :whale: **SWARM + AWS** :cloud:
+# **Learning Courses:**
+
+## :whale: **SWARM + AWS** :cloud:
 
 <br>
 
@@ -25,7 +27,7 @@
 # **Resumo:** :memo:
 
 - ## **Descrição**:
-    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+    [:top: Voltar ao topo](#learning-courses)
 
     - Applicações maiores com mts acessos
     - Fazer load-balance (distribuir carga)
@@ -37,7 +39,7 @@
 <br>
 
 - ## **Conceitos fundamentais**:
-    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+    [:top: Voltar ao topo](#learning-courses)
     - ***Control Plane***: Onde ocorre o gerenciamento dos processos dos nodes.
     - ***Nodes***: máquinas que são gerenciadas pelo Control Plane.
     - ***Pod***: um ou mais containers que estão em um Node.
@@ -50,7 +52,7 @@
 # **Infra:**
 
 - ## **Minikube**:
-    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+    [:top: Voltar ao topo](#learning-courses)
     - Minikube quickly sets up a local Kubernetes cluster on macOS, Linux, and Windows.
         - To check documentation and more infos, [follow](https://minikube.sigs.k8s.io/docs/).
     - Inicializar com o comando: ```$ minikube start --driver=<DRIVER>```
@@ -66,12 +68,12 @@
 # **Gestão de Containers:**
 
 - ## **Kubernetes modo Imperativo**:
-    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+    [:top: Voltar ao topo](#learning-courses)
     - Kubernetes is an open source container orchestration engine for automating deployment, scaling, and management of containerized applications. The open source project is hosted by the Cloud Native Computing Foundation (CNCF).
         - To check documentation and more infos, [follow](https://kubernetes.io/docs/home/).
     
     1. ### **Deployment**:
-        [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+        [:top: Voltar ao topo](#learning-courses)
 
         - Criação de Pods, definindo uma imagem e um nome, para, posteriormente, ser replicado entre os servidores.
         - É preciso que a imagem esteja no Hub do Docker, para gerar um Deployment.
@@ -101,7 +103,7 @@
     <br>
             
     2. ### **Services**:
-        [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+        [:top: Voltar ao topo](#learning-courses)
 
         - As aplicações do Kubernetes não tem conexão com o mundo externo, por isso precisamos criar um Service que é o que possibilita expor os Pods.
         - Os Pods são criados para serem destruídos (efêmeros) e perderem tudo, ou seja, os dados ferados neles serão apagados. Portanto, um Service é uma entidade separada dos Pods que expõe eles à uma rede.
@@ -123,7 +125,7 @@
 
 
     3. ### **Replicando nossa aplicação:**
-        [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+        [:top: Voltar ao topo](#learning-courses)
 
         1. **Utilizando outros Pods:**
             - ```$ kubectl scale deployment/<NOME-DEPLOYMENT> --replicas=<NUMERO>```
@@ -141,7 +143,7 @@
 
 
     4. ### **Atualizando a imagem do projeto**:
-        [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+        [:top: Voltar ao topo](#learning-courses)
 
         - Será necessário ***nome do container*** (dado na dashboard e no ```$ kubectl get pods```).
         - A nova imagem deverá ter outra versão (será necessário subir nova tag para o Hub).
@@ -164,7 +166,7 @@
 
 
     5. ### **Fazer Rollback do projeto**:
-        [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+        [:top: Voltar ao topo](#learning-courses)
         - **Comando para verificar alteração (atualização):**
             - ```$ kubectl rollout status deployment/<NOME>```
             - Conseguimos ver se subimos imagem com nome errado, tag errada, etc.
@@ -179,7 +181,7 @@
 
 
     6. ### **Deletar Serviço**:
-        [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+        [:top: Voltar ao topo](#learning-courses)
 
         - ```$ kubectl delete service <NOME>```
         - Removerá conexão externa (não poderemos mais acessar), pois não teremos mais o serviço disponível (mesmo com os pods rodando normalmente).
@@ -189,7 +191,7 @@
 
 
     7. ### **Deletar Deployment**
-        [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+        [:top: Voltar ao topo](#learning-courses)
 
         - ```$ kubectl delete deployment <NOME>```
         - Paramos os Pods e Containers.
@@ -199,7 +201,7 @@
     <br>
 
 - ## **Kubernetes modo Declarativo**:
-    [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+    [:top: Voltar ao topo](#learning-courses)
     - Escrito em YAML.
     - Para projetos mais complexos.
     1. ### **Chaves mais utilizadas para criar o arquivo YAML:**
@@ -212,7 +214,7 @@
     <br>
     
     2. ### **Criando um Deployment:**
-        [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+        [:top: Voltar ao topo](#learning-courses)
         Kind = Deployment.
         1. ### Executando:
             - ```$ kubectl apply -f <ARQUIVO>```
@@ -224,7 +226,7 @@
     <br>
     
     3. ### **Criando um Service:**
-        [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+        [:top: Voltar ao topo](#learning-courses)
         Kind = Service.
         1. ### Executando:
             - ```$ kubectl apply -f <ARQUIVO>```
@@ -242,7 +244,7 @@
     <br>
         
     4. ### **Atualizando um projeto:**
-        [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+        [:top: Voltar ao topo](#learning-courses)
         1. Criar nova versão de Imagem;
         2. Realizar push;
         3. Altera no arquivo YAML de Deployment a tag no seletor 'image:';
@@ -254,7 +256,7 @@
     <br>
 
     5. ### **Unindo Deployment e Service em um arquivo só:**
-        [:top: Voltar ao topo](#whale-swarm--aws-cloud)
+        [:top: Voltar ao topo](#learning-courses)
         - A separação de objetos para o YAML é com: ---
         - Uma boa prática é colocar o service antes do deployment
         1. ### Executando:

@@ -2,7 +2,7 @@
 
 # Sumário: :pushpin:
 
-- [Introdução](#introdução-page_facing_up-pencil2)
+- [Introdução](#introdução-page_facing_uppencil2)
 - [Implementação](#implementação-wrench)
 
 <br>

@@ -67,7 +67,14 @@ Always important to know what type of data you're dealing with.
 ## **3.  Probability:**
 
 - ### **Density Function; Probability Mass Function:**
+    - **Probability distribution function :** probability of a data point falling within some given range of a given values.
+        - deals with continuos data.
+        - example: Normal distribution
 
+            ![](./images/normal-distribution.jpg)
+    - **Probability Mass Function:**
+        - deals with discrete data.
+        - looks pretty much like a histogram which the y axis is the probability of ocurrency.
 
 ***
 

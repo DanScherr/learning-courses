@@ -61,5 +61,5 @@ Além disso, essa solução têm algumas funções que facilitam o deploy em pro
 <br>
 
 <a href="https://github.com/DanScherr">
-    <img src="./images/the-end-img.png" width="50%">
+    <img src="./../../images/the-end-img.png" width="50%">
 </a>

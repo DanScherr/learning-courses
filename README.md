@@ -1,8 +1,14 @@
-# Hello world!! :smile::earth_americas:
+# **Learning Courses:** :books::brain:
 
 <br>
 
 ### This is the ***root directory*** of all my projects done in **courses** and **university** lectures: :mortar_board::closed_book::robot:
+
+<br>
+
+# **SUMÁRIO:** :round_pushpin:
+
+<br>
 
 - [Docker](./docker/) 	:whale:
 - [Fatec](./fatec/)  :man_student:
@@ -15,7 +21,7 @@
 
 <br>
 
-### **Please, be welcome to check my profile:**
+- ### **Please, be welcome to check my profile:** :nerd_face::handshake:
 
 <br>
 

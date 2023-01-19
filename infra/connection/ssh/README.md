@@ -1,24 +1,26 @@
-# **Learning Courses:**
+# **Learning Courses:** :books::brain:
+
+<br>
 
 ## ***Creating connection via SSH*** :package::shield:
 
 <br>
 
-# Sumário: :pushpin:
+# **SUMÁRIO**: :pushpin:
 
 - [Introdução](#introdução-page_facing_uppencil2)
 - [Implementação](#implementação-wrench)
 
 <br>
 
-# Introdução: :page_facing_up::pencil2:
+# **INTRODUÇÃO**: :page_facing_up::pencil2:
 [:top: ***Voltar ao topo***](#learning-courses)
 
 
 
 <br>
 
-# Implementação: 	:wrench:
+# **Implementação**: 	:wrench:
 [:top: ***Voltar ao topo***](#learning-courses)
 
 

@@ -2,18 +2,15 @@
 
 <br>
 
-### This folder contains the studies of **Linux** (general): :penguin:
+### This is the ***root directory*** of **Web-Dev** studies: :mortar_board::closed_book::robot:
 
 <br>
-
-***
 
 # **SUMÁRIO:** :round_pushpin:
 
 <br>
 
-1. [Directories structures](./1-directories-structure/)
-2. [Commands](./2-commands/)
+- [Web dev 20courses + 20 projects](./web-dev-20courses-20projects/)
 
 <br>
 
@@ -26,5 +23,5 @@
 <br>
 
 <a href="https://github.com/DanScherr">
-    <img src="./../../images/the-end-img.png" width="50%">
+    <img src="./../images/the-end-img.png" width="50%">
 </a>

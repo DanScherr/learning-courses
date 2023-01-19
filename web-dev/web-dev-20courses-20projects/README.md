@@ -2,18 +2,22 @@
 
 <br>
 
-### This folder contains the studies of **Linux** (general): :penguin:
+### This is the **web dev 20courses and 20projects** course: :mortar_board::closed_book::robot:
 
 <br>
-
-***
 
 # **SUMÁRIO:** :round_pushpin:
 
 <br>
 
-1. [Directories structures](./1-directories-structure/)
-2. [Commands](./2-commands/)
+- [Introdução](#introdução-man_studentbooks)
+
+
+<br>
+
+# **INTRODUÇÃO:** :man_student::books:
+[:top: ***Voltar ao topo***](#learning-courses-booksbrain)
+
 
 <br>
 

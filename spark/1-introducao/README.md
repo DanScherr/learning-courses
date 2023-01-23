@@ -320,7 +320,15 @@
 
 # **Atividade:**
 
+1. ### **Atividade**
+    1. Crie uma consulta que mostre nesta ordem, Nome, Estados e Status do cliente.
+    2. Cire uma consulta que mostre apenas os clientes do Status "platinum" e "gold".
+    3. Demonstre quanto cada Status de Clientes representa em vendas?
 
+        - Resolver com DataFrames.
+        - Utilizar joins se necessário.
+
+        - [Access to view](./atividade-1.ipynb). :point_left::computer_mouse:
 
 <br>
 

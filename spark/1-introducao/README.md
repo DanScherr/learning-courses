@@ -12,7 +12,11 @@
 
 - [Introdução](#introdução-man_studentbooks)
 - [Instalando Spark]()
-
+- [Console putty para operar máquina virtual (SSH)](#console-putty-para-operar-máquina-virtual-ssh)
+- [Estrutura de pastas do Spark](#estrutura-de-pastas-do-spark)
+- [Estruturas de dados](#estruturas-de-dados)
+- [Resumo com Jupyter Notebook](#resumo-com-jupyter-notebook)
+- [Atividade](#atividade)
 
 <br>
 

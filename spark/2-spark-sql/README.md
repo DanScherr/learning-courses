@@ -18,6 +18,32 @@
 # **INTRODUÇÃO:** :man_student::books:
 [:top: ***Voltar ao topo***](#learning-courses-booksbrain)
 
+-  Utiliza o Metastore do Hive
+    - Não precisa ter o Hive instalado para usar o Spark
+
+- ## **Utilizando tabelas:**
+
+    - **Persistente** (DataFrames não são)
+        - Objeto Tabular que reside em um banco de dados
+    - Pode ser gerenciado e consultado **utilizando SQL**
+    - Totalmente **interoperável com DataFrame** (transformar um no outro e vice-versa)
+
+    - ### **Gerenciadas**:
+
+        - Spark gerencia dados e metadados
+            - Armazenadas no warehouse do Spark, se excluirmos, tudo é apagado (dados e metadados)
+    
+    - ### **Não Gerenciadas (external)**:
+        - Informamos onde está a tabela e, se excluirmos, **Spark apenas exclui os metadados**.
+    
+    - ### **Views**:
+        - Mesmo conceito de banco de dados relacionais, são um "alias" para uma tabela, não contém dados.
+        - #### *Globais*:
+            - Visíveis em todas as sessões
+        - #### **Não globais**:
+            - Visíveis apenas na própria sessão
+    
+
 
 <br>
 

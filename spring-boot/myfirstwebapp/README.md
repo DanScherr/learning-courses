@@ -81,9 +81,11 @@
     We'll be creating our method in the created subPackage/Class created on [here](#1-first-spring-mvc-controller).
 
     - ### **Main learning**:
-        - 
+        - **JSP View**;
+        - **application.properties**: preffix and suffix configs;
+        - **pom.xml**: adding dependecy.
 
-    - ### **JSP response**:
+    1. ### **JSP response**:
         1. Create new method sayHelloJsp():
         1. Configure the Annotations following [1.2.2 of these steps.](#1-first-spring-mvc-controller).
         1. **All the JSP should be created on the folder** (defined by Spring Boot): 
@@ -106,12 +108,34 @@
 
         ![](./../images/firstwebapp-1-jsp-error.png)
 
+4. ## Create Login Page (challenge):
+- Followed [3.1. steps](#redirect-to-a-jsp-view)!
 
+4. ## QueryParams using RequestParam
+    - ### **Main learning**:
+        - **Annotation**:
+            - **@RequestPara**m -> methods param
+    - ### **Main learning**:
+        - **Annotation**:
+            - **@RequestParam**
+        - **JSP View**: how to use Query Params?
+            - **Model**
+        - **Class/object**:
+            - **ModelMap**
+        - Expression Language
+    - What can we do if we want to pass a name through the url?
+    - We can **use QueryParams**:
+        /login***?name=Daniel***
+    1. Add and configure **@RequestParam** Annotation to the method params.
+    2. Use **Model** to pass a param from Controller to our JSP View:
+        1. Add a ModelMap object to the method's param.
+        2. Use .put() method in the Response method with the atribute and value that will be passed.
+    3. Add Expression Language to our jsp file with ${} notation.
 
-        
+        ![](./../images/firstwebapp-4-param-jsp-config.png)
+        ![](./../images/firstwebapp-4-param-browser-response.png)
 
-
-
+5. ## 
             
 <br>
 

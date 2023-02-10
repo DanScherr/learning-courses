@@ -22,11 +22,64 @@
     - Spring Boot: Starters, Auto Configuration, ...;
     - Frameworks/Tools: JSP, JSTL, JPA, Bootstrap, Spring Security, MYSQL, H2.
 
+
 <br>
 
-# Web App - To Do Management:
+# **Web App - To Do Management**:
 
+- ## **Intro**:
+    - ### **Main Files**:
+        - **MyFistwebappAplication.java**: main code;
+        - **application.properties**: config details about app;
+            - server.port=8081 // example to change app port
+        - **pom.xml**: find all of our dependencies rellated to the application
 
+<br>
+
+1. ## **First Spring MVC Controller**:
+    - ### **Delivery Goal:** 
+        Simple hello world response from our web application!
+    - ### **Main Annotations**:
+        - ***@RequestMapping("{url}")*** -> tied to a method
+        - ***@ResponseBody*** -> tied to a method
+        - ***@Controller*** -> tied to a class
+    - ### **Say Hello World**:
+        1. **Create a new Package (subPackage) in our main Artifact folder**:
+            */myfirstwebapp/hello/
+        1. **Create new Class inside our new hello Artifact folder**:
+            */myfirstwebapp/hello/SayHelloController.java
+            1. **Implement sayHello() method**;
+            1. **Configure url to call for sayHello() method**:
+                1. Use Spring MVC annotation **@RequestMapping("{url}")** above sayHello() method, to **map automatically an url resource** to this method;
+                    - if we refresh on the url configured, we'll get an error, so we need to configure next step..
+                1. Configure Spring MVC annotation **@Controller** to SayHelloController Class;
+                    - if we refresh on the url configured, we'll get an error, because Spring MVC will look for a View with an specific name, not a string as ease. Thats why we need to configure the next step..
+                1. Configure Spring MVC annotation **@ResponseBody** to sayHello() method;
+                    - The string we have on the method will be returned as ease to the browser.
+
+                    ![](./../images/firstwebapp-1-sayhello-success.png)
+
+<br>
+
+2. ## **Create Method to Return HTML pack:**
+    We'll be creating our method in the created subPackage/Class created on [here](#1-first-spring-mvc-controller).
+
+    - ### **Main learning**:
+        - **Class.Object**:
+            - **StringBuffer**: 
+                - **StringBuffer.append() method**: allows us to respond a html page.
+                - **StringBuffer.toString() method**: allows us to return a html page.
+        
+    - ### **HTML response**:
+        1. Create new method sayHelloHtml():
+        1. Configure the Annotations following [1.2.2 of these steps.](#1-first-spring-mvc-controller).
+        1. Use **StringBuffer** object and its **append() and toString() method** to return back a html code.
+
+<br>
+
+3. ## Coding and Debbuging:
+
+            
 <br>
 
 

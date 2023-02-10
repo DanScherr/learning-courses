@@ -1,0 +1,40 @@
+<form [formGroup]="form" fxLayoutAlign="center" novalidate> <!-- ligado com o nosso form do login.component.ts -->
+    
+    <mat-list> <!-- controle de lista do próprio material -->
+        <!-- email e senha mapeadas no formGroup do login.components.ts-->
+        <mat-list-item> <!-- controle de lista do próprio material, etc -->
+        <mat-form-field>
+          <input matInput placeholder="Email" 
+              formControlName="email"> <!-- nome do atributo mapeado no formGroup -->
+        </mat-form-field>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-form-field>
+          <input type="password" matInput placeholder="Senha"
+              formControlName="senha">
+        </mat-form-field>
+
+        <span matTooltip="Senha deve conter ao menos 6 caracteres">  <!-- adicionado no formacao-angular\projects\ponto-inteligente\src\index.html nos icones -->
+          <mat-icon>help</mat-icon>
+        </span>
+      </mat-list-item>
+
+      <mat-list-item fxLayoutAlign="center">
+        <button mat-raised-button color="primary"
+            [disabled]="form.invalid" (click)="logar()"> <!-- se formulario invalido, botao fica inativo. se usuario e senha for correto ele retorna falso e segue para o logar -->
+            Entrar
+        </button>
+      </mat-list-item>
+
+      <mat-list-item>
+        <a mat-button color="primary" routerLink="/cadastro-pf"> <!-- router link mapeando rotas -->
+            Cadastrar PF
+        </a>
+        <a mat-button color="primary" routerLink="/cadastro-pj">
+            Cadastrar PJ
+        </a>
+      </mat-list-item>
+
+    </mat-list>
+
+  </form>

@@ -77,7 +77,40 @@
 
 <br>
 
-3. ## Coding and Debbuging:
+3. ## **Redirect to a JSP (View)**:
+    We'll be creating our method in the created subPackage/Class created on [here](#1-first-spring-mvc-controller).
+
+    - ### **Main learning**:
+        - 
+
+    - ### **JSP response**:
+        1. Create new method sayHelloJsp():
+        1. Configure the Annotations following [1.2.2 of these steps.](#1-first-spring-mvc-controller).
+        1. **All the JSP should be created on the folder** (defined by Spring Boot): 
+            ```*\src\main\resources\META-ING\resources\WEB-INF\jsp\sayHello.jsp```
+            1. **Creating our View:**
+                Paste our html code on the .jsp file.
+            1. **Add prefix path** of our .jsp files to **application.properties**.
+                - Easily configure the preffix and suffix because it's already configured in spring.mvc
+        1. **Remove** the **@ResponseBody Annotation**, because we'll be returning a view.
+            - Configure logging on application.properties for debugging;
+            - After removing we'll get an error because Spring will be redirecting to the JSP view directory:
+                
+                ![](./../images/firstwebapp-1-jsp-error.png)
+
+        1. **Configure pom.xml**:
+            - **add dependency**:
+                - grouID: org.apache.tomcat.embed
+                - artifactId: tomcat-embed-jasper
+                - scope: provided
+
+        ![](./../images/firstwebapp-1-jsp-error.png)
+
+
+
+        
+
+
 
             
 <br>

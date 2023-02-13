@@ -108,10 +108,10 @@
 
         ![](./../images/firstwebapp-1-jsp-error.png)
 
-4. ## Create Login Page (challenge):
+4. ## **Create Login Page (challenge)**:
 - Followed [3.1. steps](#redirect-to-a-jsp-view)!
 
-4. ## QueryParams using RequestParam
+4. ## **QueryParams using RequestParam*:*
     - ### **Main learning**:
         - **Annotation**:
             - **@RequestPara**m -> methods param
@@ -135,8 +135,127 @@
         ![](./../images/firstwebapp-4-param-jsp-config.png)
         ![](./../images/firstwebapp-4-param-browser-response.png)
 
-5. ## 
-            
+5. ## **Logging**:
+    Configured in ***application.properties***.
+    - ## Entire Application level configuration:
+        ```logging.level.org.springframework=info```
+    - ## Logging an specific package:
+        ```loging.level.com.in28minutes.springboot.myfirstwebapp=debug```
+    - ## Adding logging into our application:
+        1. Instead of using println to logging things in our console, we'll create an object of Logger.LoggerFactory.getLogger(getClass()) (in loginController.java).
+        2. Use logger.info("String {}", {atribute/method/etc.})
+
+6. ## **DispatcherServlet**:
+    1. Model 1:
+        - In the past all logic was applied inside the View.
+    2. Model 2:
+        - Separeted into:
+            - **Model**: Data to generate the view;
+            - **View**: Show information to user;
+            - **Controller**: Controls the flow.
+    3. Model 2 + Front Controller:
+        - A front controller to implement all security, authorization in this layer and then send to next layer and place;
+            - Where we can implement common features
+            - Logic:
+                1. Receives HTTP Request;
+                2. Process HTTP Request;
+                    1. Identifies correct Controller method (based on the request)
+                2. Executes Controller method:
+                    - Returns Model and View name;
+                3. Identifies correct View, using ViewResolver
+                4. Executes View;
+                5. Returns HTTP Response.
+
+7. ## **Creating a Login Form**:
+    1. On the login.jsp:
+        1. Implement form with post method;
+            - So that the inputs of the fields do not show on the url as a get request.
+            - The information will be passed as a form data.
+    - To check what is the nature of the request: inspect => Network => Reload Page
+
+8. ## **Creating a Welcome Page**:
+    - So that the user can be redirected after loging in;
+    1. Add a request param (**method=RequestMethod.GET**) in the **@RequestMapping** Annotation as GET and POST;
+        1. Creating GET method to enter the Login Page;
+            - return Login
+        2. Creating POST method to validate Login and return the Welcome Page;
+            - return welcome
+        3. Authenticate Username and Password:
+            - Use of @RequestParam Annotation in the POST method Param to get data from form data;
+            - Use of ModelMap in the POST method Param to pass data to a page;
+            - Use model.put to map and pass the data to the page;
+    - To check what is the nature of the request: inspect => Network => Reload Page
+
+9. ## **Add hard code validation of username and password**:
+    1. Separate a different class
+        - Called AuthenticationService
+        - Add @Service Annotation to it so that Spring can autowire it
+
+10. ## Getting Started with ToDo Features:
+    1. ToDo main:
+        - POO logic (Models);
+        - atributes
+        - getters and setters
+
+    1. ToDoService:
+        - Backend logic (Database integration);
+        1. Add @Service;
+    
+    1. ToDoController:
+        - Request logic (Resources);
+        1. Add @Controller;
+        2. Add @RequestMapping;
+        3. Import and instanciate an obj of ToDoService and set it on constructor method;
+
+
+    1. ToDo View (JSP):
+        - Front-end logic (View);
+
+10. ## **Session vs Model vs Request**:
+    - **Model**: the data can only be accessed by the scope of that request;
+        - Once the response is sent back, the request attributes will be removed from memory;
+    - **Session**: the data can be stored across multiple requests;
+        - uses @**SessionAtributes({atribute})** Annotation;
+        - need to use the annotation with same parameter to all controllers that you're going to use it;
+
+11. ## **Adding JSTL into Spring Boot Project**:
+    - until now we've been using expression language (${}) to show data in our pages;
+    - we make use o JSTL to show mora dynamic and complex data in our pages;
+    1. Need to add new dependencies in our pom.xml;
+        - ```jakarta.servlet.jsp.jstl```
+        - ```org.eclipse.jetty```
+    2. In each View we need to add a tag:
+        - ```<% taglib uri="http://" %>``` -> the one we're going to use (forEach) is in the root of the [library](https://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/c/tld-summary.html); -> ```<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>```
+    3. Implement the JSTL function in our View;
+    4. Implement code in View
+
+12. ## **Adding CSS Bootstrap Framework into our View:**
+    1. Add dependency on pom.xml to use bootstrap;
+        - it'll be downloaded on ```Maven Dependencies'/'bootstrap```
+        - to make use of **css file**: 
+            copy file location of ```/META-INF/resources/webjars/bootstrap/5.1.3/css/bootstrap.min.css``` => to get minimized css version;
+        - to make use of **js file**: 
+            copy file location of ```/META-INF/resources/webjars/bootstrap/5.1.3/js/bootstrap.min.js``` => to get minimized js version;
+        - to make use of **jquery**:
+            copy file location of: ```/META-INF/resources/webjars/jquery/3.6.0/jquery.min.js``` to get minimized js version;
+    2. Add to our Views;
+        - place the css file location on the header, above your title with the link tag;
+        - place the js file location at the end of the body, with the script tag;
+    3. Rebuild?
+        ![](./../images/firstwebapp-9-bootstrap-downloaded-success.png)
+
+13. ## **Formating View pages with Bootstrap**:
+    1. Making use of [**bootstrap**](https://getbootstrap.com/docs/4.0/getting-started/introduction/);
+        - will be demonstrated on listTodos.jsp;
+        - ***It's recomended to put all the content of the body of the page into divs with a class called container***;
+        - Use **classes for tables**;
+    2. Apply config and code to other Views, since 12.1.;
+
+
+
+
+
+
 <br>
 
 

@@ -111,7 +111,7 @@
 4. ## **Create Login Page (challenge)**:
 - Followed [3.1. steps](#redirect-to-a-jsp-view)!
 
-4. ## **QueryParams using RequestParam*:*
+4. ## **QueryParams using RequestParam**:
     - ### **Main learning**:
         - **Annotation**:
             - **@RequestPara**m -> methods param
@@ -191,7 +191,7 @@
         - Called AuthenticationService
         - Add @Service Annotation to it so that Spring can autowire it
 
-10. ## Getting Started with ToDo Features:
+10. ## **Getting Started with ToDo Features**:
     1. ToDo main:
         - POO logic (Models);
         - atributes

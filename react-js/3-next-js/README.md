@@ -335,6 +335,109 @@
 
             - Before you can use Next.js' built-in Sass support, be sure to install sass:
                 ```npm install -D sass```
+<br>
+
+- # Pre-Rendering and [Data Fetching](https://nextjs.org/docs/basic-features/data-fetching/overview#getstaticprops-static-generation):
+
+    1. ## [Pre-Rendering](https://nextjs.org/docs/basic-features/pages#pre-rendering):
+        1. ### **Definition:**
+            By default, **Next.js pre-renders every page**. This means that Next.js generates HTML for each page in advance, instead of having it all done by client-side JavaScript. Pre-rendering can result in better performance and SEO.
+            Each generated HTML is associated with minimal JavaScript code necessary for that page. When a page is loaded by the browser, its JavaScript code runs and makes the page fully interactive. (This process is called hydration.)
+
+        2. ### **By disabling JS on the browser:**
+            ![](./../images/3-next-js-pre-rendering-js-disabled.png)
+
+        3. ### **Differences:**
+            ![](./../images/3-next-js-pre-rendering-js-differences-1.png)
+
+            ![](./../images/3-next-js-pre-rendering-js-differences-2.png)
+
+        4. ### **Forms of pre-rendering:**
+            1. **Static Generation**: is the pre-rendering method that generates the HTML **at build time**. The pre-rendered HTML is then reused on each request.
+                ![](./../images/3-next-js-pre-rendering-gen-static.png)
+             
+            2. **Server-side Rendering**: is the pre-rendering method that generates the HTML **on each request.**
+                ![](./../images/3-next-js-pre-rendering-gen-server-side.png)
+
+            - In development mode (when you run npm run dev or yarn dev), pages are pre-rendered on every request. This also applies to Static Generation to make it easier to develop. When going to production, Static Generation will happen once, at build time, and not on every request.
+
+        5. ### **Free Will:**
+            - Importantly, Next.js lets you choose which pre-rendering form to use for each page. You can create a "hybrid" Next.js app by using Static Generation for most pages and using Server-side Rendering for others.
+
+                ![](./../images/3-next-js-pre-rendering-free-will.png)
+
+        6. ### **When to use:**
+            - It's recommend using Static Generation (with and without data) whenever possible because your page can be built once and served by CDN, which makes it much faster than having a server render the page on every request.
+
+            - You can use Static Generation for many types of pages, including:
+                1. Marketing pages
+                2. Blog posts
+                3. E-commerce product listings
+                4. Help and documentation
+                5. You should ask yourself: "Can I pre-render this page ahead of a user's request?" If the answer is yes, then you should choose Static Generation.
+
+            - On the other hand, Static Generation is not a good idea if you cannot pre-render a page ahead of a user's request. Maybe your page shows frequently updated data, and the page content changes on every request.
+
+            - In that case, you can use Server-side Rendering. It will be slower, but the pre-rendered page will always be up-to-date. Or you can skip pre-rendering and use client-side JavaScript to populate frequently updated data.
+        
+        7. ### **With and without data:**
+            - Static Generation can be done with and without data.
+
+            - So far, all the pages we’ve created do not require fetching external data. Those pages will automatically be statically generated when the app is built for production.
+
+            - However, for some pages, you might not be able to render the HTML without first fetching some external data. Maybe you need to access the file system, fetch external API, or query your database at build time. Next.js supports this case — Static Generation with data — out of the box.
+
+                ![](./../images/3-next-js-pre-rendering-after-fetching-data.png)
+
+            1. **Static Generation with Data using getStaticProps:**
+                - How does it work? Well, in Next.js, when you export a page component, you can also export an async function called getStaticProps. If you do this, then:
+
+                1. ```getStaticProps``` runs at build time in production, and…
+                2. Inside the function, you can fetch external data and send it as props to the page.
+
+                        export default function Home(props) { ... }
+
+                        export async function getStaticProps() {
+                        // Get external data from the file system, API, DB, etc.
+                        const data = ...
+
+                        // The value of the `props` key will be
+                        //  passed to the `Home` component
+                        return {
+                            props: ...
+                        }
+                        }
+                - Essentially, getStaticProps allows you to tell Next.js: “Hey, this page has some data dependencies — so when you pre-render this page at build time, make sure to resolve them first!”
+
+                3. **Using it**:
+                    1. Creating a simple blog architecture
+                        - The blog posts in our example will be stored as local markdown files in our application's directory (not fetched from an external data source), so we'll need to ***read the data from the file system***.
+
+                        In this section, we'll go through the steps of creating a blog that reads markdown data from the file system.
+
+                    2. Creating the markdown files
+                        1. First, create a new top-level directory called posts (this is not the same as pages/posts) in your root folder. Inside posts, create two files: pre-rendering.md and ssg-ssr.md.
+
+                        2. Now, code to posts/pre-rendering.md;
+
+                        3. Then, code to posts/ssg-ssr.md;
+
+                        - You might have noticed that each markdown file has a metadata section at the top containing title and date. This is called YAML Front Matter, which can be parsed using a library called [gray-matter](https://github.com/jonschlinkert/gray-matter).
+                            1. Installing gray-matter:
+                                ```npm install gray-matter```
+                    
+                    3. Creating the utility function to read the file system
+                        - Next, we’ll create a ***utility function for parsing data*** from the file system. With this utility function, we’d like to:
+
+                            - Parse each markdown file and get title, date, and file name (which will be used as id for the post URL).
+                            - List the data on the index page, sorted by date.
+                        
+                        1. Create a top-level directory called lib (created libraries - functions) in the root directory. Then, inside lib, create a file called posts.js, code;
+
+
+    2. ## [Data-Fetching](https://nextjs.org/docs/basic-features/data-fetching/overview#getstaticprops-static-generation):
+
+
 
 <br>
 

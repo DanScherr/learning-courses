@@ -15,8 +15,8 @@
 1. **[Assets, Metadata and CSS](./tutorial/3-assets-metadata-css/)**
 1. **[Pre-rendering Pages and Data Fetching]()**
 1. **[Fetching Data at Request Time](./tutorial/5-fetching-data-at-request-time.md)**
-1. **[]()**
-1. **[]()**
+1. **[Dynamic Routes](./tutorial/6-dynamic-routing.md)**
+1. **[API Routes](./tutorial/7-api-routes.md)**
 
 <br>
 

@@ -10,9 +10,27 @@
 
 <br>
 
-1. [Intro](./1-intro/)
+1. [Create Next.js app](./1-intro/)
 
 <br>
+
+# **Create Next.js app:**
+1. If not, install yarn:
+
+    ```$ npm install --global yarn```
+
+2. Create Next app:
+    
+    ```$ yarn create next-app```
+
+3. Run app:
+    1. Enter app directory
+        
+        ```$ cd {app-directory}```
+
+    2. Run dev
+        
+        ```$ yarn dev```
 
 ***
 

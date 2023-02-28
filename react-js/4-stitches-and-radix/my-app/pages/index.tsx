@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { createStitches } from '@stitches/react';
 import { violet, slate } from '@radix-ui/colors'
+import * as Dialog from '@radix-ui/react-dialog';
 import React from 'react';
 
 /* const {css} = createStitches({
@@ -344,7 +345,7 @@ const button = css({
 })
 
 
-const overlay = css ({ // fundo cinza pegando todo background
+const overlay = css ({ // fundo cinza pegando todo background e se sobressaindo do todo
   position: 'fixed',
   inset: 0,
   backgroundColor: 'rgb(0, 0, 0, 0.2)',
@@ -360,9 +361,10 @@ const content = css({
   transform: 'translate(4%, 4%)',
 })
 
+const box = css({}) // vazio para ser acessado no código
 
 export default function Home() {
-  const [open, setOpen] = React.useState(false) //saber se o dialog está aberto e poder abrir ele
+//  const [open, setOpen] = React.useState(false) //saber se o dialog está aberto e poder abrir ele
 
   return (
     <div className={(body())}>
@@ -370,24 +372,35 @@ export default function Home() {
         <title>Stitches and Radix App</title>
       </Head>
 
-      <div>
-        <button onClick={() => setOpen(true)} className={button({variant: 'purple'})}>
+      <Dialog.Root>
+        <Dialog.Trigger className={button({variant: 'purple'})}>
           Open profile
-        </button>
-        {open && (
-          <div>
-            <div className={overlay()} />
-          <div className={content()}>
-            <h3>Edit Profile</h3>
-            <p>Here you can edit your profile.</p>
-            <label htmlFor="">Name</label>
-            <input type="text" placeholder='Daniel'/>
-            <button className={button({variant: 'purple'})}>Save changes</button>
-            <button className={button({variant: 'gray'})} onClick={() => setOpen(false)}>Close</button>
-          </div>
-        </div>
-        )}
-      </div>
+        </Dialog.Trigger>
+
+          <Dialog.Overlay className={overlay()}/>
+
+
+          <Dialog.Content className={content()}>
+            <Dialog.Title>Edit Profile</Dialog.Title>
+            <Dialog.Description>Here you can edit your profile.</Dialog.Description>
+            <div className={box({css: {marginBottom: '$5'}})}>
+              <label className={box({css: {marginRight: '$2'}})} htmlFor="">Name</label>
+              <input type="text" placeholder='Say my name..'/>
+            </div>
+            <div className={box({
+              css: {
+                '& button:first-child': {marginRight: '$1'},
+            }})}>
+              <button className={button({variant: 'purple'})}>
+                Save changes
+              </button>
+              <Dialog.Close className={button({variant: 'gray'})}>
+                Close
+              </Dialog.Close>
+            </div>
+          </Dialog.Content>
+
+      </Dialog.Root>
     </div>
   )
 }

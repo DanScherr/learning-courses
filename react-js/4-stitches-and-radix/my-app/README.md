@@ -21,11 +21,10 @@
         1. **[Create and Define Theme](#create-and-define-theme-in-the-instance-of-stitches)**
 
 1. **[RADIX](#radix)**
-    1. **[Install and configure Radix]()**
-    1. **[Usint it]()**
-    1. **[]()**
-    1. **[]()**
-    1. **[]()**
+    1. **[Working with Color Sistems](#working-with-color-system)**
+    1. **[Creating a Dialog Element](#creating-a-dialog-element)**
+        1. **[Elemento Coringa](#elemento-coringa)**
+        1. **[Making it accessible for people with disabilities](#making-it-accessible-for-people-with-disabilities)**
 
 <br>
 
@@ -137,45 +136,74 @@
 
 # **RADIX:**
 
-- # **Using it:**
-    1. ## **Working with [color system](https://www.radix-ui.com/colors):**
-        1. **Installing it:**
+1. # **Working with [color system](https://www.radix-ui.com/colors):**
+    **BACK TO [THE TOP](#learning-courses-booksbrain)** :point_left::top:
+    1. ## **Installing it:**
 
-            ```yarn add @radix-ui/colors```
+        ```yarn add @radix-ui/colors```
 
-        2. **Importing it:**
+    2. ## **Importing it:**
+        
+        ```import { violet, slate } from '@radix-ui/colors'```
+
+        - we'll get the colors inside the {}
+
+        - if we printed the color (console.log(violet)):
+            - we would get a scale from 1 to 12 and in each token there's a value of a color.
             
-            ```import { violet, slate } from '@radix-ui/colors'```
+            ![](./../../images/5-1-radix-color-console-log-violet.png)
 
-            - we'll get the colors inside the {}
+2. # **Creating a Dialog Element:**
+    **BACK TO [THE TOP](#learning-courses-booksbrain)** :point_left::top:
 
-            - if we printed the color (console.log(violet)):
-                - we would get a scale from 1 to 12 and in each token there's a value of a color.
-                
-                ![](./../../images/5-1-radix-color-console-log-violet.png)
+    1. We'll use it in our created Stitches theme (css):
 
-        3. **Using it:**
+        ![](./../../images/5-1-radix-color-using-in-theme.png)
 
-            1. We'll use it in our created Stitches theme (css):
+    2. We'll reconfigure our tokens in our constants:
+        - We have to use the correct color number [in the right place](https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale):
 
-                ![](./../../images/5-1-radix-color-using-in-theme.png)
-
-            2. We'll reconfigure our tokens in our constants:
-                - We have to use the correct color number [in the right place](https://www.radix-ui.com/docs/colors/palette-composition/understanding-the-scale):
-
-                    ![](./../../images/5-1-radix-color-using-in-theme-configuring-it.png)
+            ![](./../../images/5-1-radix-color-using-in-theme-configuring-it.png)
 
 
+    3. ## **Elemento Coringa:**
+        **BACK TO [THE TOP](#learning-courses-booksbrain)** :point_left::top:
+
+        - we instantiate an empty css object
+
+            ```const box = css({}) // vazio para ser acessado no código```
+
+        - And then we can use it in our code as we wish:
+            ![](./../../images/5-1-radix-elemento-curinga.png)
+
+        - We can also use inheritance to create a css style cascade:
+            ![](./../../images/5-1-radix-elemento-curinga-inheritance.png)
             
+            ![](./../../images/5-1-radix-elemento-curinga-inheritance-2.png)
+
+    4. ## **Making it accessible for people with disabilities:**
+        **BACK TO [THE TOP](#learning-courses-booksbrain)** :point_left::top:
+
+        1. Check specifications [on documentation](https://www.radix-ui.com/docs/primitives/components/dialog):
+            1. Install:
+
+                ```npm install @radix-ui/react-dialog```
+
+            2. Implement Anatomy:
+                - It's no longer necessary the React.useState
+
+                ![](./../../images/5-1-radix-accessibility.png)
+
+        - ### **For more UI Components, [check in here.](https://www.radix-ui.com/docs/primitives/overview/introduction)**
 
 
 
-
-<br>
+<br><br>
 
 ***
+***
 
-<br>
+<br><br>
 
 - ### **Please, be welcome to check my profile:** :nerd_face::handshake:
 

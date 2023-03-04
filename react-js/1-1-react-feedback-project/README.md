@@ -404,7 +404,120 @@
     - our app is done but all we have are at app.js
     - we want to start to move it to a global context, a global state that we can use to pass our state down to our components through the context rather than have it all in our app.js
 
-    1. ### **Create a Context and Provider**
+    1. ### **Create a [Context](https://reactjs.org/docs/context.html) and Provider**
+
+        - Context provides a way to pass data through the component tree without having to pass props down manually at every level.
+
+        - In a typical React application, data is passed top-down (parent to child) via props, but such usage can be cumbersome for certain types of props (e.g. locale preference, UI theme) that are required by many components within an application. Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.
+
+        - Before, wherever we'ld create a state we would have to pass it down as props to our components in order to use them.
+
+        - What we want to do is to move our globe states and any functions to manipulate it into Context and then bring it in into the Component directly.
+
+        1. Create new folder called context under src.
+
+        2. Create a file in the context folder called FeedbackContext.js
+
+        3. Import
+
+            ```import { createContext, useState } from 'react';```
+
+        4. Instantiate an object (set a viable) of createContext()
+
+        5. Create a Provider
+            - So that we can wrap it up the components we want to 'pass' the context with it (like the Router) instead of passing a props as attributes.
+
+            1. Export a variable provider that receives a function that has as its parameters {children}, so that we can wrap it up the components with our provider
+
+            2. Create a piece of state, in our case feedback and setFeedback with useState
+
+            3. Return our Provider with a value prop attribute with our feedback being passed on it and wrapping up the children
+
+        6. Import our provider on App.js
+
+        7. Wrap everything.
+
+    2. ### **Get Global State with the useContext hook: Use data from our created Context**
+
+        1. Go to our FeedbackList Component and import useContext hook and our create context
+
+            1. ```import { useContext } from 'react'```
+
+            2. ```import FeedbackContext from '../context/FeedbackContex'```
+
+        2. Extract into variable(s) the context of the FeedbackContext by useContext().
+            - We'll have access to anything that's being passed inside the value attribute as props: feedback
+
+            ```const {feedback} = useContext(FeedbackContext)```
+
+        3. We don't have to being passing feedback as a prop to our FeedbackList Component anymore, neither our FeedbackList.propTypes
+
+        4. We dont need to pass feedback as a prop on App.js
+
+        5. Do the same thing for FeedbackStats Component
+
+    3. ### **Moving Function to Context:**
+
+        1. Cut the deleteFeedback function from app and paste it on our FeedbackProvider right under our state.
+
+        2. Pass it on the value attribute in our FeedbackContext.Provider
+
+        3. So we no longer need to pass it on App.js to our FeedbackList Component as a prop
+
+        4. Go to our FeedbackList:
+            - because we don't have to be passing it to the FeedBackItem
+            1. Can get rid of:
+                - handleDelete param prop
+                - prop being passed to FeedBackItem
+
+        5. Do the same thing on 16.2.1 to the FeedBackList with deleteFeedbacl
+
+        6. We'll have to replace handleDelete for deleteFeedback
+
+        7. Do the same thing for addFeedback
+            - remeber to cut the import of the v4 from uuid from App to FeedbackContext
+            - clean up App.js
+            - update FeedbackForm
+
+    4. ### **Create EditFeedback Event:**
+
+        - We'll have to add a new piece of Global State to add a flag to us to know which item is being edited when we click on the icon
+
+        1. Import FaEdit along with FaTimes in FeedbackItem
+
+        2. Create edit button with the FaEdit icon
+
+        3. Add the new piece of state on FeedbackContext
+
+        4. Create a constant that receives a function to treat our feedbackEdit
+
+        5. Pass it on value Attribute of FeedbackContext.Provider
+
+        6. Import it on FeedBackItem and set it on our const as well
+
+        7. Implement it on the onClick event of the edit button
+
+        - At this point nothing will happen in our UI
+
+        8. Add feedbackEdit to our value Attribute of FeedbackContext.Provider, so that we can access it's data in our Components
+
+        9. Add feedbackEdit in our FeedbackForm
+            - So whenever it changes on our feedbackEdit, we want the form to get the text and rating from the feedback selected, and that's called a side effect
+
+        10. Import useEffect on FeedbackForm
+
+        11. Implement useEffect
+            - It'll implement the text just fine but the rating will be getting the data but it'll not be showing on our UI, because we've changed the FeedBackItem with our editFeedback function, but didnt set to change ou RatingSelect Component
+
+        12. Implement useEfect on RatingSelect
+
+        13. Create new function on FeedbackContext to update feedback selected
+
+        14. Get the function on our FeedbackFrom 
+
+        15. Call it on submit button with conditioning it
+
+
 
 ***
 

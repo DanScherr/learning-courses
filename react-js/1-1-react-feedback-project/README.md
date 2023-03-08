@@ -497,7 +497,7 @@
 
         7. Implement it on the onClick event of the edit button
 
-        - At this point nothing will happen in our UI
+            - At this point nothing will happen in our UI
 
         8. Add feedbackEdit to our value Attribute of FeedbackContext.Provider, so that we can access it's data in our Components
 
@@ -517,7 +517,84 @@
 
         15. Call it on submit button with conditioning it
 
+17. ## **APIs & HTTP Requests**
 
+    1. ### **Setting Up JSON-Server Mock Backend**
+        1. installing it:
+
+                ```npm i json-server```
+
+        2. Add Script to package.json:
+
+                ```"server": "json-server --watch db.json --port 5000"```
+
+        3. Create db.json file on ./root
+            - where we are going to put our data
+            1. Create Schema (tables):
+                - we'll only have one for feedbacks
+            2. Create objects for the tables with fields
+
+        4. Run Server:
+
+            ```npm run server```
+
+        5. Using Postman for the requests.
+
+            "http://localhost:5000/{schema-name}"
+
+            ![schema-json](./images/run-server-get-request-feedback.png)
+
+            ![post-request](./images/run-server-post-request-feedback.png)
+
+            ![delete-request](./images/run-server-delete-request-feedback.png)
+
+    2. ### **Run Client and Server Concurrently**
+
+        1. Install concurrently:
+            ```npm i concurrently```
+
+        2. Create a Script in package.json:
+            ```Create a Script in package.json:```
+
+        3. Run:
+            ```npm run dev```
+
+    3. ### **Update Feedback app to fetch from Mock Backend**
+
+        1. Replace data for an empty array on the piece of State for feedback and setFeedback instance
+
+        2. Import useEffect to run this as soon as our context loads in our App
+
+        3. Create an async function to fetch feedback and saving it into a variable, setting our feedback on to the data. Call this function on ou useEffect
+
+            - It can take a while to fetch data, so it's nice to have a loading flag on the state to show like a spinner.
+
+        4. Create Spinner as a loading flag:
+            1. create a new piece of state for our provider seting it to true as deffault, to be true until we receive the request and then we'll set it to false.
+            2. SetIsLoading(false) on fetchFeedbakck aget setFeeback(data)
+            3. We'll pass our Loading state to any component passing it on to our values attribute of our FeedbackContext.Provider, so that we can create a spinner to be shown while we don't get our response from the Backend
+
+            4. Spinner Component:
+                1. Create assets folder on components folder
+                2. Bring gif file to it (from github repository)
+                3. Bring isLoading with feedback useContext on the feedbackList
+                4. Add !isLoading to the condition code
+
+            5. Create Spinner Component on shared folder
+                1. Import gif
+                2. implement code with returning an img
+                3. import it on FeedbackList Component
+
+        5. Creating a proxy:
+            1. add to package.json:
+
+                ```"proxy": "http://localhost:5000"```
+
+        6. Updating getting data from our Mock Backend:
+            1. update addFeedback
+            2. update deleteFeedback
+            3. update updateFeedback
+    
 
 ***
 

@@ -46,10 +46,15 @@ export default function FeedbackForm( /* {handleAdd} */ ) {
 
             if (feedbackEdit.edit === true) {
                 updateFeedback(feedbackEdit.item.id, newFeedback)
+                setBtnDisabled(true)
             } else {
                 addFeedback(newFeedback)
+                setBtnDisabled(true)
+                
             }
         }
+        setMessage('Text must be at least 10 characters..')
+        setBtnDisabled(true)
     }
 
     return (

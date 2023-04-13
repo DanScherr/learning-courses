@@ -130,6 +130,30 @@
         5. Import it on UserSearch from useContext and Implement it
         6. Clear User Button
 
+5. ## **Alert & User Profile:**
+
+    1. Alert:
+        1. Create Context and Reducer:
+            1. Create new folder inside context folder called alert
+            2. inside of it create AlertContext.js and AlertReducer.js
+            3. Implement it
+                1. Create Context
+                2. Create Provider
+                    1. Set initial state
+                    2. Return Provider
+                        - with desired values
+            4. Import and Wrap Components in App.jsx with Provider so that we can make use of Context
+
+        2. Implement functional code to set alert in page:
+            1. Import AlertContext into
+            2. Pullout what we need from Context in const
+            3. Replace alert code in handleSumbit with our setAlert
+
+        3. Create Component:
+            1. Create Alert.jsx under layout and Implement it
+            2. Import it on App.js
+            3. Implement Component above the main tag
+
 
 ***
 

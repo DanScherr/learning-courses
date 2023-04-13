@@ -53,6 +53,7 @@ export const GithubProvider = ({children}) => {
 
         const { items } = await response.json() // destructor the items from data array
 
+        console.log(items)
         /* setUsers(data)
         setLoading(false) */
         dispatch({ //updates the state for the Reducer

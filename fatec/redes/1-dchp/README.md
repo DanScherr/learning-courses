@@ -1,8 +1,21 @@
 # **FATEC - SP :teacher:**
 ## **LABORATÓRIO DE REDES :globe_with_meridians:**
 
+***
+
 ## **SUMÁRIO :pushpin:**
 
+- **TEORIA:**
+    1. [INSTALAÇÃO DE SERVIÇO DE DHCP](#instalação-de-serviço-de-dhcp-round_pushpin)
+    2. [CONTEXTUALIZANDO UM SERVIÇO DHCP](#contextualizando-um-serviço-dhcp-round_pushpin)
+    3. [DEFINIÇÃO: DCHP](#definição-dchp---dynamic-host-configuration-protocol-round_pushpin)
+    4. [COMO OPERA](#modus-operandi-como-é-feito-round_pushpin)
+    5. [FORMAS DE ATRIBUIÇÃO DE REDES](#diferentes-formas-de-atribuição-de-redes-round_pushpin)
+
+- **PRATICA:**
+    1. [PACKET TRACER](#packet-tracer-round_pushpin)
+
+***
 
 ## **INSTALAÇÃO DE SERVIÇO DE DHCP :incoming_envelope:**
 
@@ -41,7 +54,7 @@
     - Outra maneira, seria criar um processo para atribuir um outro nível de endereço para cada casa dentro do condomínio, o que vamos chamar de endereço local. Sendo assim, fica muito mais fácil de, apenas pelo endereço do pacote, saber de quem é dono.
     - A mesma coisa funciona para uma rede local. O serviço de DHCP (processo de atribuição de endereçamento local) funciona para distribuir endereços para cada máquina, só que de forma automática e dinâmica (vamos entender melhor essas questões).
 
-### DCHP - Dynamic Host Configuration Protocol :round_pushpin:
+### Definição: DCHP - Dynamic Host Configuration Protocol :round_pushpin:
 **[back to top](#fatec---sp-teacher) :point_left: :top:**
 
 - DHCP em português: algo como, Protocolo de Configuração **Dinâmica** de Endereços de Rede.

@@ -3,21 +3,32 @@
 
 ## **SUMÁRIO :pushpin:**
 
-1. [DHCP](./1-dchp/)
+1. **[DHCP](./1-dchp/) :heavy_check_mark:**
 
-2. HTTP (sem DNS)
+2. HTTP (sem DNS) :x:
 
-3. DNS
+3. DNS :x:
 
-4. HTTP (com DNS)
+4. HTTP (com DNS) :x:
 
-5. E-mail (POP + SMTP)
+5. E-mail (POP + SMTP) :x:
 
-6. ACCESS POINT
+6. ACCESS POINT :x:
+
+- Introdução:
+    1. [AMBIENTE](#ambiente-round_pushpin)
+    2. [MAPA DE NAVEGAÇÃO - PACKET TRACER](#packet-tracer---mapa-de-navegação-round_pushpin)
 
 ***
 
-## Packet Tracer - Mapa de Navegação :round_pushpin:
+## **AMBIENTE :round_pushpin:**
+
+  - **OS:** Linux Ubuntu 22.04.2 LTS
+  - **Packet Tracer:** 8.2.1
+
+
+
+## **PACKET TRACER - Mapa de Navegação :round_pushpin:**
 **[back to top](#fatec---sp-teacher) :point_left: :top:**
 
 ![](./images/packet-tracer-intro.png)

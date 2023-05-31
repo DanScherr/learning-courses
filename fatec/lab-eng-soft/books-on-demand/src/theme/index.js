@@ -9,8 +9,9 @@ export const darkTheme = createTheme({
             navBar: grey[900],
         },
         primary: {
-            main: yellow['A400'],
-            veryLightMain: yellow[50],
+            main: amber['A400'],
+            lightMain: amber['A200'],
+            veryLightMain: amber[200],
         },
         secondary: {
             main: amber['A400'],

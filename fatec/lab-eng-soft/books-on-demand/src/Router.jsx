@@ -5,8 +5,6 @@ import {
     Route,
     Routes
 } from "react-router-dom";
-/** Components */
-import Header from "./components/catalog/shared/Header";
 /** Bootstrap */
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap/dist/js/bootstrap.bundle";

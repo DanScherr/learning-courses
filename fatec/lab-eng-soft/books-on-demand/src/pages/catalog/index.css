@@ -1,0 +1,11 @@
+.carousel-item {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+.carousel-caption {
+    text-align: end;
+}
+
+#carousel .row {
+    height: 300px;
+}

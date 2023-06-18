@@ -9,8 +9,10 @@ import { BrowserRouter } from 'react-router-dom';
 /** Theme */
 import { ThemeProvider } from '@emotion/react';
 import { darkTheme } from './theme';
-import { lightTheme } from './theme';
 import { CssBaseline } from '@mui/material';
+// Bootstrap
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

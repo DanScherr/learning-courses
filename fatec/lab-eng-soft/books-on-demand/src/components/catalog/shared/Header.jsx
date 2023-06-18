@@ -12,6 +12,7 @@ import {
     MenuItem, 
     Tooltip, 
     Avatar,
+    Button,
 } from '@mui/material';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -21,8 +22,8 @@ import { useState } from 'react';
 import profileImg from './../../../static/images/avatar/3.jpg'
 import SearchInput from './SearchInput';
 
-const pages = ['My Books', 'Dashboard', 'Settings'];
-const settings = ['Profile', 'My Books', 'Dashboard', 'Settings', 'Logout'];
+const pages = ['Clássico', 'Ficção', 'Romance', 'Outros'];
+const settings = ['Profile', 'My Books', 'Settings', 'Logout'];
 
 
 export default function Header( ) {
@@ -75,11 +76,23 @@ export default function Header( ) {
                                 Ponto e Vírgula ;
                             </Typography>
 
+                            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                                {pages.map((page) => (
+                                <Button
+                                    key={page}
+                                    onClick={handleCloseNavMenu}
+                                    sx={{ my: 2, color: 'primary.veryLightMain', display: 'block' }}
+                                >
+                                    {page}
+                                </Button>
+                                ))}
+                            </Box>
+
                             {/** SMALL SCREENS */}
                             {/** Menu */}
                             <Box sx={{ 
                                 flexGrow: 0.5, 
-                                display: { xs: 'flex', md: 'none' },
+                                display: { xs: 'flex', md: 'none' }, ml: 5,
                                 width: 50,
                             }}>
                                 <IconButton 
@@ -137,7 +150,7 @@ export default function Header( ) {
                                 component="a"
                                 href="/"
                                 sx={{
-                                mr: 2,
+                                mr: 1,
                                 display: { xs: 'flex', md: 'none'},
                                 fontFamily: 'monospace',
                                 fontWeight: 700,

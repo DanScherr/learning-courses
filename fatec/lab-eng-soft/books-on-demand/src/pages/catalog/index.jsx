@@ -2,17 +2,20 @@
 import React from "react";
 /** Components */
 import Header from "../../components/catalog/shared/Header";
-import Carousel from "../../components/catalog/Carousel";
+/** Context */
+import { CatalogProvider } from "../../context/data/catalog/CatalogContext";
 
 /** Style */
 import './index.css'
+import { Outlet } from "react-router-dom";
 
-export default function Home(  ) {
+export default function Catalog(  ) {
     return (
         <>
             <Header />
-            <Carousel />
-            
+            <CatalogProvider>
+                <Outlet />
+            </CatalogProvider>
         </>
     )
 }

@@ -23,7 +23,7 @@ import profileImg from './../../../static/images/avatar/3.jpg'
 import SearchInput from './SearchInput';
 
 const pages = ['Clássico', 'Ficção', 'Romance', 'Outros'];
-const settings = ['Profile', 'My Books', 'Settings', 'Logout'];
+const settings = ['My Books', 'Settings', 'Logout'];
 
 
 export default function Header( ) {

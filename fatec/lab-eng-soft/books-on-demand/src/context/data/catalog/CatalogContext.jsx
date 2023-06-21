@@ -1,5 +1,6 @@
 /** Context */
-import { createContext } from "react";
+import { createContext, useReducer } from "react";
+import catalogReducer from "./CatalogReducer";
 /** Resources */
 import BookImage from "./../../../static/images/category/opened-book-1.png"
 
@@ -7,16 +8,44 @@ const CatalogContext = createContext();
 
 
 export const CatalogProvider = ({children}) => {
+
     const initialState = {
-        catalogo: [],
-        categorias: [],
-        categoriaUltimosLidos: [],
-        categoriaNovos: [],
-        categoriaClassicos: [],
-        categoriaFiccao: [],
-        categoriaRomance: [],
-        categoriaOutros: [],
+        categoria: {
+            load: true,
+            data: []
+        },
+        categoriaId: 'all'
     };
+    const [state, dispatch] = useReducer(catalogReducer, initialState);
+
+    const setClearCategoria = (() => {
+        dispatch({
+            type: 'SET_CLEAR_CATEGORY',
+        })
+    })
+
+    const setCategoriaID = ((id) => {
+        dispatch({
+            type: 'SET_CATALOG_NAME',
+            payload: id
+        })
+    })
+
+    const setCategoria = (() => {
+        let data = []
+        if (state.categoriaId==='all') 
+            data = initialMockup.catalogo
+        else {
+            data = initialMockup.catalogo.filter((item) =>( 
+                item.id === state.categoriaId
+            ))
+        }
+        dispatch({
+            type: 'SET_CATALOG',
+            payload: data
+        })
+    })
+
 
     let lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '
 
@@ -80,7 +109,11 @@ export const CatalogProvider = ({children}) => {
 
     return <CatalogContext.Provider
         value = {{
-            initialMockup
+            setClearCategoria,
+            setCategoria,
+            setCategoriaID,
+            initialMockup,
+            categoria: state.categoria
         }}
     >
         {children}

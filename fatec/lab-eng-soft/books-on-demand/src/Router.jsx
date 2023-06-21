@@ -18,6 +18,7 @@ const Login = lazy(() => import("./pages/Login/index"))
 const Catalog = lazy(() => import("./pages/catalog/index"))
 const Home = lazy(() => import("./pages/Home/index"))
 const Book = lazy(() => import("./pages/book/index"))
+const Category = lazy(() => import("./pages/category/index"))
 
 export default function Router(  ) {
 
@@ -26,9 +27,10 @@ export default function Router(  ) {
             <Suspense fallback={<div>Loading...</div>}>
                 <Routes>
                     <Route path="/login" element={<Login />} />
-                    <Route path="/" element={<Navigate to="/home" />} />
+                    <Route path="/" element={<Navigate to="/catalog" />} />
                     <Route path="/" element={<Catalog />} >
-                        <Route path="/home" element={<Home/>} />
+                        <Route path="/catalog" element={<Home/>} />
+                        <Route path="/category" element={<Category/>} />
                     </Route>
                     <Route path="/book" element={<Book/>} />
                 </Routes>

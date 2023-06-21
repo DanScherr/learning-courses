@@ -14,8 +14,8 @@ export const darkTheme = createTheme({
             veryLightMain: amber[50],
         },
         secondary: {
-            main: amber['A400'],
-            veryLightMain: amber[50],
+            main: amber['900'],
+            veryLightMain: amber[600],
         },
     }
 })

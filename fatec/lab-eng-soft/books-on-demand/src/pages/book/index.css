@@ -1,0 +1,24 @@
+/** Book Entire Page */
+.react-pdf__Page {
+    background-color: #131414 !important;
+}
+
+/** Delete text layer */
+.textLayer {
+    display: none !important;
+}
+
+/** Delete annotation layer */
+.annotationLayer {
+    display: none !important;
+}
+
+/** Center PDF */
+.react-pdf__Page__canvas {
+    margin-left: auto;
+    margin-right: auto;
+    height: 85vh !important;
+    width: 70vh !important;
+    padding: 10px;
+}
+

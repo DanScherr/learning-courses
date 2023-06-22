@@ -17,16 +17,20 @@ import {
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
 import profileImg from './../../../static/images/avatar/3.jpg'
 import SearchInput from './SearchInput';
+import { useNavigate } from 'react-router-dom';
+import CatalogContext from '../../../context/data/catalog/CatalogContext';
 
-const pages = ['Clássico', 'Ficção', 'Romance', 'Outros'];
-const settings = ['My Books', 'Settings', 'Logout'];
+
+const settings = ['Login','Logout'];
 
 
 export default function Header( ) {
+    /** Contexto */
+    const {initialMockup} = useContext(CatalogContext)
 
     /** Hide Bar when Scroll */
     const trigger = useScrollTrigger();
@@ -46,6 +50,15 @@ export default function Header( ) {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    /** Navigate to Category */
+    const {setCategoriaID} = useContext(CatalogContext)
+
+    const navigate = useNavigate();
+    const navegarCategoria = ((categoria) => {
+        setCategoriaID(categoria);
+        navigate('/category')
+    })
 
 
     return(
@@ -77,13 +90,13 @@ export default function Header( ) {
                             </Typography>
 
                             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                                {pages.map((page) => (
+                                {initialMockup.catalogo.map((page) => (
                                 <Button
-                                    key={page}
-                                    onClick={handleCloseNavMenu}
+                                    key={page.id}
+                                    onClick={() => navegarCategoria(page.id)}
                                     sx={{ my: 2, color: 'primary.veryLightMain', display: 'block' }}
                                 >
-                                    {page}
+                                    {page.descricao}
                                 </Button>
                                 ))}
                             </Box>
@@ -126,8 +139,8 @@ export default function Header( ) {
                                         display: {xs: 'block', md: 'none'}
                                     }}
                                 >
-                                    {pages.map((page) => (
-                                        <MenuItem key={page} onClick={handleCloseNavMenu} sx={[
+                                    {initialMockup.catalogo.map((page) => (
+                                        <MenuItem key={page} onClick={() => navegarCategoria(page.id)} sx={[
                                             {
                                               ':hover': {
                                                 color: 'primary.veryLightMain',
@@ -135,7 +148,7 @@ export default function Header( ) {
                                             },
                                         ]}
                                         >
-                                            <Typography textAlign="center">{page}</Typography>
+                                            <Typography textAlign="center">{page.descricao}</Typography>
                                         </MenuItem>
                                     ))}
                                 </Menu>
@@ -160,7 +173,7 @@ export default function Header( ) {
                                 flexGrow: 0.5
                                 }}
                             >
-                                Ponto e Vírgula ;
+                                ;
                             </Typography>
 
                             {/** BIG SCREENS */}

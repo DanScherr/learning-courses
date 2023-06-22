@@ -7,7 +7,7 @@ const catalogReducer = (state, action) => {
                 categoriaId: 'all'
             };
 
-        case 'SET_CATALOG_NAME':
+        case 'SET_CATALOG_ID':
             
             return {
                 ...state,
@@ -22,6 +22,20 @@ const catalogReducer = (state, action) => {
                     load: false,
                     data: action.payload,
                 }
+            };
+
+        case 'SET_NUMERO':
+            
+            return {
+                ...state,
+                numero: action.payload
+            };
+
+        case 'SET_BOOK_ID':
+            console.log('-->Entrou no reducerrrr:', action.payload)
+            return {
+                ...state,
+                book: action.payload
             };
     
         default:

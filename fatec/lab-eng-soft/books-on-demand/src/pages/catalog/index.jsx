@@ -13,9 +13,7 @@ export default function Catalog(  ) {
     return (
         <>
             <Header />
-            <CatalogProvider>
-                <Outlet />
-            </CatalogProvider>
+            <Outlet />
         </>
     )
 }

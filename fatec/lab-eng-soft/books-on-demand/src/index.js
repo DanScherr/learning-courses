@@ -12,17 +12,20 @@ import { darkTheme } from './theme';
 import { CssBaseline } from '@mui/material';
 // Bootstrap
 import 'bootstrap/dist/css/bootstrap.css';
+import { CatalogProvider } from './context/data/catalog/CatalogContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
-    </ThemeProvider>
+    <CatalogProvider>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
+      </ThemeProvider>
+    </CatalogProvider>
   </React.StrictMode>
 );
 

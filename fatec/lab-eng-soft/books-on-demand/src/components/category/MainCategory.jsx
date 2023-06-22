@@ -9,15 +9,15 @@ import { Grid } from "@mui/material";
 
 
 export default function MainCategory(  ) {
-    const {setCategoria, categoria} = useContext(CatalogContext)
+    const {setCategoria, categoria, categoriaId} = useContext(CatalogContext)
 
     useEffect(() => {
         setCategoria();
     }, [])
 
     useEffect(() => {
-        console.log('---->categoria', categoria)
-    }, [categoria])
+        setCategoria();
+    }, [categoriaId])
 
             
 
@@ -41,11 +41,13 @@ export default function MainCategory(  ) {
                             return (
                             categoria.books.map((livro) => {
                                 return (
-                                    <Grid item xs={10} md={5} lg={4} sx={{mx: 'auto'}}>
+                                    <Grid key={toString(livro.id) + 'grid'} item xs={10} md={5} lg={4} sx={{mx: 'auto'}}>
                                         <CategoryCard 
+                                            key={toString(livro.id) + 'CategoryCard'}
                                             categoria={categoria.descricao}
                                             title={livro.titulo}
                                             desc={livro.descricao}
+                                            id={livro.id}
                                         />
                                     </Grid>
                                 )

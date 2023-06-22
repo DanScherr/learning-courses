@@ -5,6 +5,8 @@ import Carousel from './shared/Carousel'
 import { useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import CatalogContext from '../../context/data/catalog/CatalogContext'
+import './Category.css'
+
 
 export default function Category( { data={}} ) {
     const {setCategoriaID} = useContext(CatalogContext)
@@ -27,13 +29,12 @@ export default function Category( { data={}} ) {
                                 {data.descricao}
                             </Typography>
                         </Button>
-                        <Button color="inherit">Back to top</Button>
                     </Toolbar>
                 </AppBar>
                 </Box>
 
                 {/** CAROUSEL */}
-                <Carousel books={data.books} />
+                <Carousel books={data.books} id={data.id} />
                 
             </div>
         </div>

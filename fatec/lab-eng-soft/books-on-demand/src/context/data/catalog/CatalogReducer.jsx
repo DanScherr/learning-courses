@@ -32,10 +32,16 @@ const catalogReducer = (state, action) => {
             };
 
         case 'SET_BOOK_ID':
-            console.log('-->Entrou no reducerrrr:', action.payload)
             return {
                 ...state,
                 book: action.payload
+            };
+
+        case 'ADD_BOOK_TO_CATEGORY':
+            console.log('ENTROU NO REDUCERS')
+            return {
+                ...state,
+                categoria: action.payload
             };
     
         default:

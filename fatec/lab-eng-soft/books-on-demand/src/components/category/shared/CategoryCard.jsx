@@ -28,6 +28,8 @@ export default function CategoryCard( {
                 sx={{ height: 140, mt: 3}}
                 image={image === 'not found' ? BookImage : image}
                 title="book image"
+                className='imgLivroCategoria cursorHand'
+                onClick={() => navigateToLearnMore(id)}
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">

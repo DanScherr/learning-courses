@@ -4,14 +4,21 @@ import CatalogContext from "../../../context/data/catalog/CatalogContext";
 import { useNavigate } from "react-router-dom";
 
 export default function Carousel( {books=[], id=''} ) {
-    const {setBookId} = useContext(CatalogContext)
+    const {setBookId, addBookToUltimosVistos} = useContext(CatalogContext)
+    
     const navigate = useNavigate()
     const navegarPDF = ((id) => {
+        let livro = books.filter((book) => (
+            book.id === id
+        ))
+        console.log('---> livro escolhido:', livro)
+        addBookToUltimosVistos(livro)
         setBookId(id)
         navigate('/book')
     })
+    
     const top3 = books.slice(0,3)
-    console.log(top3)
+    
     return (
         /** Indicators */
         <div id={id} className="carousel carousel slide mb-4">
@@ -37,7 +44,7 @@ export default function Carousel( {books=[], id=''} ) {
                                         </Button>
                                     </div>
                                     <div className="col-5 my-auto">
-                                            <h5 className="pe-5">{item.titulo}</h5>
+                                            <h5 className="pe-5 tituloCarousel">{item.titulo}</h5>
                                             <p className="descricaoCatalogo pe-10">{item.descricao}</p>
                                     </div>
                                     <div className="col-1">&nbsp;</div>

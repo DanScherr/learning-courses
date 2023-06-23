@@ -9,8 +9,7 @@ import {
 /** Bootstrap */
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap/dist/js/bootstrap.bundle";
-/** PDF Viwer */
-import { PDFViewer } from "@react-pdf/renderer";
+
 
 
 /**Create lazy calls */

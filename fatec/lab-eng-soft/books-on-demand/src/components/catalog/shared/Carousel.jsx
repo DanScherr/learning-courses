@@ -4,15 +4,10 @@ import CatalogContext from "../../../context/data/catalog/CatalogContext";
 import { useNavigate } from "react-router-dom";
 
 export default function Carousel( {books=[], id=''} ) {
-    const {setBookId, addBookToUltimosVistos} = useContext(CatalogContext)
+    const {setBookId} = useContext(CatalogContext)
     
     const navigate = useNavigate()
     const navegarPDF = ((id) => {
-        let livro = books.filter((book) => (
-            book.id === id
-        ))
-        console.log('---> livro escolhido:', livro)
-        addBookToUltimosVistos(livro)
         setBookId(id)
         navigate('/book')
     })

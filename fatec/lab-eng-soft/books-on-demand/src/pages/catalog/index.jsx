@@ -2,8 +2,6 @@
 import React from "react";
 /** Components */
 import Header from "../../components/catalog/shared/Header";
-/** Context */
-import { CatalogProvider } from "../../context/data/catalog/CatalogContext";
 
 /** Style */
 import './index.css'

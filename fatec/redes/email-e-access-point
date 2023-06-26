@@ -1,0 +1,37 @@
+Configuração de e-mail:
+
+
+aba services
+	email
+	add domain name
+	add user e pass
+	add user e pass
+	
+com o ip dos clientes configurados:
+	configurar email dentro dos clientes:
+		desktop
+		your name (usario add)
+		userName@domainName
+		incoming mail server: IP do servidor q configuramos o servidor de email
+		outgoing..: ""
+		
+		login e senha (usuario e senha criados)
+		
+		
+		
+Configuração de Access Point:
+
+Pegar access point:
+	network devices -> wireless devices
+	ligar no switch
+	
+Adicionar notebook na rede wi-fi
+	coloca notebook
+	configurar ip com dhcp
+	congigurar notebook:
+		 clicar e remover placa de rede na aba physical
+		 delisgar notebook
+		 acidionar wpc300N (wifi)
+		 ligar notebook
+		 já é para estar configurado
+		 testar conexão com o teste.com.br

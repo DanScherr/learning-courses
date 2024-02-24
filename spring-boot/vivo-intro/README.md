@@ -31,6 +31,24 @@
         - GamingConsole interface
             - Game classes: Mario, Super Contra, PacMan...
 
+    - **Dependency Types** (from the best usage to worst):
+        1. Constructor-based: set by creating the Bean using its Constructor
+        2. Setter-based: set by calling setter methods on your beans
+        3. Field: injected using reflection
+
+    - Modules:
+        - IoC Container
+        - Testing (unity test)
+        - Data Access
+        - Web Servlet
+        - Web Reactive
+        - Integration
+    
+
+## :round_pushpin: Maven
+- Configuration is on pom.xml
+    - Group Id and Artifact Id
+
 ## Project:
 
 1. Iteration - Tightly Coupled:
@@ -56,3 +74,15 @@
         - It doesnt care anymore if it's a SuperContra or Mario game
     
 3. Iteraction - Another lvl of Loosed Coupling
+    - Let Spring manage dependencies by:
+        - Adding @Component above the Classes statements and as a dependency of the classes
+            - Component is a class managed by Spring
+            - Dependency is something you need to, to run a specific class
+        - Also, @Autowired on the dependencies of those classes
+    - Spring manages them in the **Application Context**
+    - **BEANS**: any instance of any object that Springs creates are called bean
+
+- Understanding what's happening on the background
+    1. Configure logs for debuging:
+        1. resources/ application.properties
+            - logging.level.org.springframework=debug

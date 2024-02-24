@@ -1,8 +1,13 @@
 package com.spring.learnspringframework.game;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class GameRunner {
 
     // Creating Member Variable
+    @Autowired
     private GamingConsole game;
 
     public GameRunner(GamingConsole game) {
